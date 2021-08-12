@@ -105,27 +105,30 @@ using Microsoft.Extensions.Logging;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 38 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\Pages\Counter.razor"
+#line 44 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\Pages\Counter.razor"
        
 
     private Paths paths = new() { StreetList = new List<Street>() };
 
-    private int Index = 0;
+    private int NrPaths = 0;
 
     private async Task HasClicked(int CheckID)
     {
         await JSRuntime.InvokeVoidAsync("disableCheckbox", CheckID, "");
+        await JSRuntime.InvokeVoidAsync("saveInSession", CheckID);
     }
 
     private async Task HandleValidSubmit()
     {
         paths.StreetList = new();
-        Index = 0;
 
         await JSRuntime.InvokeVoidAsync("enableCheckbox");
 
+        await JSRuntime.InvokeVoidAsync("sessionStorageClean");
+
         if (paths.NrPath == "Nr1")
         {
+            NrPaths = 1;
             paths.StreetList.Add(new Street { Id = 1, Name = "Via Armaroli" });
             paths.StreetList.Add(new Street { Id = 2, Name = "Via Roma" });
             paths.StreetList.Add(new Street { Id = 3, Name = "Via Stelloni Ponente" });
@@ -170,6 +173,7 @@ using Microsoft.Extensions.Logging;
 
         if (paths.NrPath == "Nr2")
         {
+            NrPaths = 2;
             paths.StreetList.Add(new Street { Id = 41, Name = "Via Armaroli" });
             paths.StreetList.Add(new Street { Id = 42, Name = "Via Roma" });
             paths.StreetList.Add(new Street { Id = 43, Name = "Via Pierantoni" });
@@ -226,6 +230,7 @@ using Microsoft.Extensions.Logging;
 
         if (paths.NrPath == "Nr3")
         {
+            NrPaths = 3;
             paths.StreetList.Add(new Street{Id = 93, Name = "Via Armaroli"});
             paths.StreetList.Add(new Street{Id = 94, Name = "Via Pertini"});
             paths.StreetList.Add(new Street{Id = 95, Name = "Rotonda Bersaglieri"});
@@ -275,6 +280,7 @@ using Microsoft.Extensions.Logging;
 
         if (paths.NrPath == "Nr4")
         {
+            NrPaths = 4;
             paths.StreetList.Add(new Street { Id = 138, Name = "Via Armaroli" });
             paths.StreetList.Add(new Street { Id = 139, Name = "Via Pertini" });
             paths.StreetList.Add(new Street { Id = 140, Name = "Via Prati" });
@@ -312,6 +318,7 @@ using Microsoft.Extensions.Logging;
 
         if (paths.NrPath == "Nr5")
         {
+            NrPaths = 5;
             paths.StreetList.Add(new Street { Id = 171, Name = "Via Armaroli" });
             paths.StreetList.Add(new Street { Id = 172, Name = "Via Roma" });
             paths.StreetList.Add(new Street { Id = 173, Name = "Rotonda Falcone" });

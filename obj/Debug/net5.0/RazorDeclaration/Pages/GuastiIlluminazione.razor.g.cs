@@ -111,11 +111,18 @@ using System;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 26 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\Pages\GuastiIlluminazione.razor"
+#line 27 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\Pages\GuastiIlluminazione.razor"
        
-   private Paths paths = new(){StreetList = new List<Street>()};   
-   
-   private void HandleValidSubmit(){}
+    private Paths paths = new() { StreetList = new List<Street>() };
+
+    private void HandleValidSubmit() { }
+
+    private int MaxNumber = 1;
+
+    private void AddRow()
+    {
+        MaxNumber++;
+    }
 
 #line default
 #line hidden

@@ -25,6 +25,18 @@
             var xxx = document.getElementsByTagName("input");
             console.log(xxx);
         }
+
+        window.saveInSession = (elementId) => {
+            var val = document.getElementById(elementId).value;
+            var streetsInSession = JSON.parse(window.sessionStorage.getItem('selected'));
+            var streets = streetsInSession != null ? streetsInSession : [];
+            streets.push(val);
+            window.sessionStorage.setItem('selected', JSON.stringify(streets));
+        }
+
+        window.sessionStorageClean = () => {
+            window.sessionStorage.clear();
+        }
     </script>
 </head>
 <body>

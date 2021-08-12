@@ -9,22 +9,30 @@
 <EditForm Model="@paths" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
+    <p>
+        <label><strong>Allegato al Verbale Nr: </strong><input type="text" /></label>
+        <label><strong>del: </strong><input type="text" /></label>
+        <input type="button" value="Aggiungi riga" @onclick="e => { AddRow(); }" />
+    </p>
+    @for (int i = 0; i < MaxNumber; i++)
+    {
+        <label><strong>Lampione N.: </strong><input type="text" id="@("lamp" + i)" /></label>
+        <label><strong>Via: </strong><input type="text" id="@("via" + i)"/></label>
+        <label><strong>Civico: </strong><input type="text" id="@("civico" + i)" /></label>
+        <br />
+    }
 
-<label><strong>Allegato al Verbale Nr: </strong><input type="text" /></label>
-<label><strong>del: </strong><input type="text" /></label><br/>
-
-	@for(int i = 1; i < 21; i++)
-	{
-		<label><strong>Lampione N.: </strong><input type="text" /></label>
-		<label><strong>Via: </strong><input type="text" /></label>
-		<label><strong>Civico</strong><input type="text" /></label>
-		<br />
-	}
-	
-	<button type="submit">Salva</button>
+    <button type="submit">Salva</button>
 </EditForm>
 @code {
-   private Paths paths = new(){StreetList = new List<Street>()};   
-   
-   private void HandleValidSubmit(){}
+    private Paths paths = new() { StreetList = new List<Street>() };
+
+    private void HandleValidSubmit() { }
+
+    private int MaxNumber = 1;
+
+    private void AddRow()
+    {
+        MaxNumber++;
+    }
 }

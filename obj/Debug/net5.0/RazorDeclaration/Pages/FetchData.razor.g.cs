@@ -105,11 +105,28 @@ using ProCivReport.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 55 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\Pages\FetchData.razor"
+#line 68 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\Pages\FetchData.razor"
        
-   private Paths paths = new(){StreetList = new List<Street>()};   
-   
-   private void HandleValidSubmit(){}
+    private Paths paths = new() { StreetList = new List<Street>() };
+
+    private void HandleValidSubmit() { }
+
+    private DateTime FirstDepHour;
+    private DateTime FirstArrHour;
+    private DateTime SecondDepHour;
+    private DateTime SecondArrHour;
+    private string FirstTotalHour;
+    private string SecondTotalHour;
+
+    private void CalculateGroup(int groupNumber)
+    {
+
+        var difference = groupNumber == 1 ? FirstArrHour.Subtract(FirstDepHour) : SecondArrHour.Subtract(SecondDepHour);
+        if (groupNumber == 1)
+            FirstTotalHour = difference.TotalHours.ToString();
+        else
+            SecondTotalHour = difference.TotalHours.ToString();
+    }
 
 #line default
 #line hidden
