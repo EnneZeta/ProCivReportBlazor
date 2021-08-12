@@ -118,3 +118,13 @@ C:\Users\zazzaroa\source\repos\ProCivReportBlazor\obj\Debug\net5.0\ProCivReport.
 C:\Users\zazzaroa\source\repos\ProCivReportBlazor\obj\Debug\net5.0\ProCivReport.genruntimeconfig.cache
 C:\Users\zazzaroa\source\repos\ProCivReportBlazor\obj\Debug\net5.0\ProCivReport.csproj.CopyComplete
 C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\ProCivReport.deps.json
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\Microsoft.AspNetCore.Components.dll
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\Microsoft.AspNetCore.Components.Forms.dll
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\Microsoft.AspNetCore.Components.Web.dll
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\Microsoft.AspNetCore.Components.WebAssembly.dll
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\Microsoft.JSInterop.dll
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\Microsoft.JSInterop.WebAssembly.dll
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\System.IO.Pipelines.dll
