@@ -1,0 +1,30 @@
+@page "/guasti"
+@using ProCivReport.Data
+@using System
+
+<h1>Segnalazione Guasti Pubblica Illuminazione</h1>
+
+
+
+<EditForm Model="@paths" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+<label><strong>Allegato al Verbale Nr: </strong><input type="text" /></label>
+<label><strong>del: </strong><input type="text" /></label><br/>
+
+	@for(int i = 1; i < 21; i++)
+	{
+		<label><strong>Lampione N.: </strong><input type="text" /></label>
+		<label><strong>Via: </strong><input type="text" /></label>
+		<label><strong>Civico</strong><input type="text" /></label>
+		<br />
+	}
+	
+	<button type="submit">Salva</button>
+</EditForm>
+@code {
+   private Paths paths = new(){StreetList = new List<string>()};   
+   
+   private void HandleValidSubmit(){}
+}

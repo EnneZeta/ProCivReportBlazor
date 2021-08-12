@@ -1,0 +1,294 @@
+@page "/counter"
+@using Microsoft.Extensions.Logging
+@inject ILogger<Counter> Logger
+@using System
+
+<h1>Scegliere percorso per visualizzare le strade</h1>
+
+<EditForm Model="@paths" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+<p>
+<label>
+Percorsi:
+<InputSelect @bind-Value="paths.NrPath">
+<option value="">Seleziona percorso...</option>
+<option value="Nr1">Nr. 1</option>
+<option value="Nr2">Nr. 2</option>
+<option value="Nr3">Nr. 3</option>
+<option value="Nr4">Nr. 4</option>
+<option value="Nr5">Nr. 5</option>
+</InputSelect>
+</label>
+</p>
+<button type="submit">Ok</button>
+
+<ul style="list-style-type: none;">
+	@foreach(var street in paths.StreetList)
+	{
+		<li><input type="checkbox" id="@street" name="@street" value="@street" @onchange="eventArgs => { HasClicked(street, eventArgs); }"/>  @street </li>
+	}
+</ul>
+</EditForm>
+
+
+
+@code {
+
+   private Paths paths = new(){StreetList = new List<string>()};   
+    
+   private void HasClicked(string CheckID, ChangeEventArgs args)
+   {
+
+   }
+   
+   private void HandleValidSubmit()
+	{
+		paths.StreetList = new();
+	
+		if(paths.NrPath == "Nr1")
+		{
+			paths.StreetList.Add("Via Armaroli");
+			paths.StreetList.Add("Via Roma");
+			paths.StreetList.Add("Via Stelloni Ponente");
+			paths.StreetList.Add("Via Verde");
+			paths.StreetList.Add("Via Stelloni Ponente");
+			paths.StreetList.Add("Via Valtiera");
+			paths.StreetList.Add("Via Ferrovia");
+			paths.StreetList.Add("Tavernelle Parco");
+			paths.StreetList.Add("Via Nadalini");
+			paths.StreetList.Add("Via Ferrovia");
+			paths.StreetList.Add("Via Persicetana");
+			paths.StreetList.Add("Via Sacernia");
+			paths.StreetList.Add("Via Di Mezzo Ponente (fino al ponte)");
+			paths.StreetList.Add("Via Bacciliera (fino a cea)");
+			paths.StreetList.Add("Via di Mezzo Levante");
+			paths.StreetList.Add("Via Punta (Sotto Bologna)");
+			paths.StreetList.Add("Via Vivaio (Sotto Bologna)");
+			paths.StreetList.Add("Via Persicetana");
+			paths.StreetList.Add("Rotonda Bai");
+			paths.StreetList.Add("Via Giovanni Paolo II");
+			paths.StreetList.Add("Via Marcheselli");
+			paths.StreetList.Add("Rotonda Gandhi");
+			paths.StreetList.Add("Via Caduti di Ustica");
+			paths.StreetList.Add("Rotonda Gandhi");
+			paths.StreetList.Add("Via Armaroli");
+			paths.StreetList.Add("Via King");
+			paths.StreetList.Add("Via Rizzola Levante");
+			paths.StreetList.Add("Via del Campo");
+			paths.StreetList.Add("Via Collodi");
+			paths.StreetList.Add("Rotonda Pradazzo");
+			paths.StreetList.Add("Via Pradazzo");
+			paths.StreetList.Add("Via Garibaldi");
+			paths.StreetList.Add("Rotonda Bersaglieri");
+			paths.StreetList.Add("Via Rizzola Ponente");
+			paths.StreetList.Add("Via da Vinci");
+			paths.StreetList.Add("Via della Mimosa");
+			paths.StreetList.Add("Via Bazzane");
+			paths.StreetList.Add("Via Puccini");
+			paths.StreetList.Add("Via Roma");
+			paths.StreetList.Add("Via Armaroli");
+		}
+	
+		if(paths.NrPath == "Nr2")
+		{
+			paths.StreetList.Add("Via Armaroli");
+			paths.StreetList.Add("Via Roma");
+			paths.StreetList.Add("Via Pierantoni");
+			paths.StreetList.Add("Via Roma");
+			paths.StreetList.Add("Via Bazzane");
+			paths.StreetList.Add("Via Verdi");
+			paths.StreetList.Add("Via Parcheggio Via Verdi");
+			paths.StreetList.Add("Via Bazzane");
+			paths.StreetList.Add("Via Moro");
+			paths.StreetList.Add("Via Alpi");
+			paths.StreetList.Add("Via Delle Rose");
+			paths.StreetList.Add("Via Turati");
+			paths.StreetList.Add("Via dei Glicini");
+			paths.StreetList.Add("Via Dello Sport");
+			paths.StreetList.Add("Piazza 44410");
+			paths.StreetList.Add("Via Moro");
+			paths.StreetList.Add("Via Turati");
+			paths.StreetList.Add("Piazza Ex Poliambulatorio");
+			paths.StreetList.Add("Via Turati");
+			paths.StreetList.Add("Via Gramsci");
+			paths.StreetList.Add("Via Roma (fino al sottopasso pedonale)");
+			paths.StreetList.Add("Via Rizzola Ponente");
+			paths.StreetList.Add("Via Vittime 11 Settembre");
+			paths.StreetList.Add("Via Gramsci");
+			paths.StreetList.Add("Zona Orti");
+			paths.StreetList.Add("Via Gramsci");
+			paths.StreetList.Add("Via Vittime 11 Settembre");
+			paths.StreetList.Add("Via Rizzola Ponente");
+			paths.StreetList.Add("Via Roma");
+			paths.StreetList.Add("Via del Bracciante");
+			paths.StreetList.Add("Via Perlasca");
+			paths.StreetList.Add("Via Levi");
+			paths.StreetList.Add("Via del Bracciante");
+			paths.StreetList.Add("Via Allende");
+			paths.StreetList.Add("Via del Bracciante");
+			paths.StreetList.Add("Via Dell'artigiano");
+			paths.StreetList.Add("Rotonda Matteotti");
+			paths.StreetList.Add("Via Matteotti");
+			paths.StreetList.Add("Rotonda presso Via Berlinguer");
+			paths.StreetList.Add("Via Iotti");
+			paths.StreetList.Add("Rotonda presso Via Berlinguer");
+			paths.StreetList.Add("Via Matteotti");
+			paths.StreetList.Add("Via Buozzi");
+			paths.StreetList.Add("Via Di Vittorio");
+			paths.StreetList.Add("Via 44317");
+			paths.StreetList.Add("Piazza Della Resistenza");
+			paths.StreetList.Add("Piazza Della Pace");
+			paths.StreetList.Add("Rotonda Falcone");
+			paths.StreetList.Add("Piazza Marconi");
+			paths.StreetList.Add("Via  Roma");
+			paths.StreetList.Add("Via Gramsci");
+			paths.StreetList.Add("Via Armaroli");		
+		}
+	
+		if(paths.NrPath == "Nr3")
+		{
+			paths.StreetList.Add("Via Armaroli");
+			paths.StreetList.Add("Via Pertini");
+			paths.StreetList.Add("Rotonda Bersaglieri");
+			paths.StreetList.Add("Via Giovanni Paolo II");
+			paths.StreetList.Add("Rotonda Bai");
+			paths.StreetList.Add("Via De Gasperi");
+			paths.StreetList.Add("Via  Bargellino");
+			paths.StreetList.Add("Via Dell'Industria");
+			paths.StreetList.Add("Rotonda Senza Nome");
+			paths.StreetList.Add("Via Roma Sud");
+			paths.StreetList.Add("Via Marzocchi");
+			paths.StreetList.Add("Via XXV Aprile");
+			paths.StreetList.Add("Via Ropa");
+			paths.StreetList.Add("Via Castagnini");
+			paths.StreetList.Add("Via Ropa");
+			paths.StreetList.Add("Via Baravelli");
+			paths.StreetList.Add("Via Piretti");
+			paths.StreetList.Add("Via Turrini");
+			paths.StreetList.Add("Via Corazza");
+			paths.StreetList.Add("Via Pizzoli");
+			paths.StreetList.Add("Via Grassilli");
+			paths.StreetList.Add("Via Gazzani");
+			paths.StreetList.Add("Via Stagni");
+			paths.StreetList.Add("Via Bizzarri");
+			paths.StreetList.Add("Via Mingozzi");
+			paths.StreetList.Add("Rotonda Harley Davidson");
+			paths.StreetList.Add("Via Persicetana");
+			paths.StreetList.Add("Via Bastia");
+			paths.StreetList.Add("Via Bizzarri");
+			paths.StreetList.Add("Via Grassilli");
+			paths.StreetList.Add("Via Finelli");
+			paths.StreetList.Add("Via Commenda");
+			paths.StreetList.Add("Via Della Salute");
+			paths.StreetList.Add("Rotonda Di Matteo");
+			paths.StreetList.Add("Via Stazione Bargellino");
+			paths.StreetList.Add("Rotonda Di Matteo");
+			paths.StreetList.Add("Via Torretta");
+			paths.StreetList.Add("Rotonda Di Matteo");
+			paths.StreetList.Add("Via Marcheselli");
+			paths.StreetList.Add("Rotonda Gandhi");
+			paths.StreetList.Add("Via Marcheselli");
+			paths.StreetList.Add("Via Giovanni Paolo II");
+			paths.StreetList.Add("Rotonda Bersaglieri");
+			paths.StreetList.Add("Via Pertini");
+			paths.StreetList.Add("Via Armaroli");		
+		}
+		
+		if(paths.NrPath == "Nr4")
+		{
+			paths.StreetList.Add("Via Armaroli");
+			paths.StreetList.Add("Via Pertini");
+			paths.StreetList.Add("Via Prati");
+			paths.StreetList.Add("Via Fornace");
+			paths.StreetList.Add("Via Pilastrino");
+			paths.StreetList.Add("Via CastelCampeggi");
+			paths.StreetList.Add("Via Passo Pioppe");
+			paths.StreetList.Add("Via Longarola");
+			paths.StreetList.Add("Via Don Fornasari");
+			paths.StreetList.Add("Via Caduti della libertà");
+			paths.StreetList.Add("Via Arbizzani");
+			paths.StreetList.Add("Via Longarola");
+			paths.StreetList.Add("Via San Michele");
+			paths.StreetList.Add("Via Longarola");
+			paths.StreetList.Add("Via Costa");
+			paths.StreetList.Add("Via Fellini");
+			paths.StreetList.Add("Via Pasolini");
+			paths.StreetList.Add("Via Zucchelli");
+			paths.StreetList.Add("Via Marchesini");
+			paths.StreetList.Add("Rotonda De Pisis");
+			paths.StreetList.Add("Via Longarola");
+			paths.StreetList.Add("Via Fabbreria");
+			paths.StreetList.Add("Via Barleta");
+			paths.StreetList.Add("Vicolo Parma");
+			paths.StreetList.Add("Via Longarola");
+			paths.StreetList.Add("Via Larga");
+			paths.StreetList.Add("Via Valli");
+			paths.StreetList.Add("Via Prati");
+			paths.StreetList.Add("Via Calanchi");
+			paths.StreetList.Add("Via Turati (Sala Bolognese)");
+			paths.StreetList.Add("Via Stelloni Ponente");
+			paths.StreetList.Add("Via Roma");
+			paths.StreetList.Add("Via Armaroli");		
+		}
+	
+		if(paths.NrPath == "Nr5")
+		{
+			paths.StreetList.Add("Via Armaroli");
+			paths.StreetList.Add("Via Roma");
+			paths.StreetList.Add("Rotonda Falcone");
+			paths.StreetList.Add("Via Roma");
+			paths.StreetList.Add("Via Garibaldi");
+			paths.StreetList.Add("Via Mazzini");
+			paths.StreetList.Add("Via Garibaldi");
+			paths.StreetList.Add("Rotonda Bersaglieri");
+			paths.StreetList.Add("Via Garibaldi");
+			paths.StreetList.Add("Via Cavour");
+			paths.StreetList.Add("Via Garibaldi");
+			paths.StreetList.Add("Via Pradazzo");
+			paths.StreetList.Add("RotondaPradazzo");
+			paths.StreetList.Add("Via Del Cerchio");
+			paths.StreetList.Add("Via due Scale");
+			paths.StreetList.Add("Rotonda Bonazzi");
+			paths.StreetList.Add("Via San Vitalino");
+			paths.StreetList.Add("Via Masetti");
+			paths.StreetList.Add("Via Aldina");
+			paths.StreetList.Add("Rotonda Dello Storione");
+			paths.StreetList.Add("Via Crocetta");
+			paths.StreetList.Add("Via Due Giugno");
+			paths.StreetList.Add("Via Crocetta");
+			paths.StreetList.Add("Via Castaldini (parcheggio)");
+			paths.StreetList.Add("Via Surrogazione");
+			paths.StreetList.Add("Via Giovanni XXIII");
+			paths.StreetList.Add("Via Bassi");
+			paths.StreetList.Add("Via Giovanni XXIII");
+			paths.StreetList.Add("Via Castaldini (scuola e parco)");
+			paths.StreetList.Add("Via Don Minzoni");
+			paths.StreetList.Add("Via Aldina");
+			paths.StreetList.Add("Via Ungheri");
+			paths.StreetList.Add("Rotonda Bugli");
+			paths.StreetList.Add("Via San Vitalino");
+			paths.StreetList.Add("Via Serra");
+			paths.StreetList.Add("Via del Maccabreccia");
+			paths.StreetList.Add("Via della Corte");
+			paths.StreetList.Add("Via Serra");
+			paths.StreetList.Add("Via San Vitalino");
+			paths.StreetList.Add("Via Rosselli");
+			paths.StreetList.Add("Via San Vitalino");
+			paths.StreetList.Add("Via Candini");
+			paths.StreetList.Add("Via San Vitalino");
+			paths.StreetList.Add("Rotonda Bugli");
+			paths.StreetList.Add("Via Ungheri");
+			paths.StreetList.Add("Via Aldina");
+			paths.StreetList.Add("Via Barca");
+			paths.StreetList.Add("Via Aldina");
+			paths.StreetList.Add("Via San Vitalino");
+			paths.StreetList.Add("Via Stelloni Levante");
+			paths.StreetList.Add("Via Pertini");
+			paths.StreetList.Add("Via Armaroli");
+			paths.StreetList.Add("Via Bassi");		
+		}
+	
+		// Process the valid form
+	}
+}

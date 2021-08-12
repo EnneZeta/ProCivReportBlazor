@@ -1,0 +1,59 @@
+﻿@page "/fetchdata"
+
+@using ProCivReport.Data
+
+
+<h1>Rapporto di Servizio</h1>
+dsads
+<EditForm Model="@paths" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+<label><strong>Verbale Nr: </strong><input type="text" /></label>
+<label><strong>Data: </strong><input type="text" /></label>
+<ul style="list-style-type: none;">
+		<li><input type="checkbox" />  Monitoraggio Territorio  </li>
+		<li><input type="checkbox" />  Esercitazione </li>
+		<li><input type="checkbox" />  Gest. Attrezzatura/Sede  </li>		
+		<li><input type="checkbox" />  COR/SOUP  </li>
+		<li><input type="checkbox" />  Corso Formazione  </li>
+		<li><input type="checkbox" />  Emergenza  <input type="text" /></li>
+		<li><input type="checkbox" />  Altro  <input type="text" /></li>
+</ul>
+<label><strong>Caposquadra: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
+<label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
+<label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
+<label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
+<label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
+<label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
+<label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
+<label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
+<label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
+<label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
+<label><h3>VEICOLI: </h3>
+<label><strong>Mezzo: </strong><input type="text" /></label>&nbsp;<label><strong>Targa: </strong><input type="text" /></label>&nbsp;<label><strong>TOT KM: </strong><input type="text" /></label><br />
+<label><strong>Mezzo: </strong><input type="text" /></label>&nbsp;<label><strong>Targa: </strong><input type="text" /></label>&nbsp;<label><strong>TOT KM: </strong><input type="text" /></label><br />
+<label><strong>Mezzo: </strong><input type="text" /></label>&nbsp;<label><strong>Targa: </strong><input type="text" /></label>&nbsp;<label><strong>TOT KM: </strong><input type="text" /></label><br />
+</label>
+<br />
+
+<label><h3>1° Gruppo: </h3>
+<label><strong>Ora di Partenza: </strong><input type="text" /></label>&nbsp;<label><strong>Ora di Arrivo: </strong><input type="text" /></label>&nbsp;<label><strong>Ore Totali: </strong><input type="text" /></label><br />
+</label>
+
+<label><h3>2° Gruppo: </h3>
+<label><strong>Ora di Partenza: </strong><input type="text" /></label>&nbsp;<label><strong>Ora di Arrivo: </strong><input type="text" /></label>&nbsp;<label><strong>Ore Totali: </strong><input type="text" /></label><br />
+</label>
+<br />
+
+<label><strong>Note: </strong><textarea> </textarea></label><br/>
+
+<button type="submit">Salva</button>
+
+
+</EditForm>
+@code {
+   private Paths paths = new(){StreetList = new List<string>()};   
+   
+   private void HandleValidSubmit(){}
+}
