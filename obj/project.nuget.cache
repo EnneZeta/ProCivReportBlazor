@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hQa2FfuptkNtLPR5vTZeTFoYuyl5y1+FumURz3gLX0zP6yVXmZ363r0MKhgNWV3Hd31OJUiAPngRU2m+yPoPgQ==",
+  "dgSpecHash": "eXn9rXRKO2buWtzzE7GwTRn4CJCddWm3vEZonqs1UYHv3yYCv/qCve8nKWjYmBO9rYcKC+Oo10m/a0aUiHhdfA==",
   "success": true,
-  "projectFilePath": "S:\\Deploy\\ProCivReport\\ProCivReport.csproj",
+  "projectFilePath": "C:\\Users\\zazzaroa\\source\\repos\\ProCivReportBlazor\\ProCivReport.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

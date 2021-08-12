@@ -15,6 +15,17 @@
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link href="css/site.css" rel="stylesheet" />
     <link href="ProCivReport.styles.css" rel="stylesheet" />
+    <script>
+        window.disableCheckbox = (elementId, markers) => {
+            var elem = document.getElementById(elementId);
+            elem.setAttribute("disabled","true");
+            }
+
+        window.enableCheckbox = () => {
+            var xxx = document.getElementsByTagName("input");
+            console.log(xxx);
+        }
+    </script>
 </head>
 <body>
     <component type="typeof(App)" render-mode="ServerPrerendered" />
