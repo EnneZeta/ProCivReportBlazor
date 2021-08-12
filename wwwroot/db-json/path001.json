@@ -1,4 +1,162 @@
 [
-   "Via Armaroli" ,
-   "Via Roma" 
+  {
+    "Id": 1,
+    "Name": "Via Armaroli"
+  },
+  {
+    "Id": 2,
+    "Name": "Via Roma"
+  },
+  {
+    "Id": 3,
+    "Name": "Via Stelloni Ponente"
+  },
+  {
+    "Id": 4,
+    "Name": "Via Verde"
+  },
+  {
+    "Id": 5,
+    "Name": "Via Stelloni Ponente"
+  },
+  {
+    "Id": 6,
+    "Name": "Via Valtiera"
+  },
+  {
+    "Id": 7,
+    "Name": "Via Ferrovia"
+  },
+  {
+    "Id": 8,
+    "Name": "Tavernelle Parco"
+  },
+  {
+    "Id": 9,
+    "Name": "Via Nadalini"
+  },
+  {
+    "Id": 10,
+    "Name": "Via Ferrovia"
+  },
+  {
+    "Id": 11,
+    "Name": "Via Persicetana"
+  },
+  {
+    "Id": 12,
+    "Name": "Via Sacernia"
+  },
+  {
+    "Id": 13,
+    "Name": "Via Di Mezzo Ponente (fino al ponte)"
+  },
+  {
+    "Id": 14,
+    "Name": "Via Bacciliera (fino a cea)"
+  },
+  {
+    "Id": 15,
+    "Name": "Via di Mezzo Levante"
+  },
+  {
+    "Id": 16,
+    "Name": "Via Punta (Sotto Bologna)"
+  },
+  {
+    "Id": 17,
+    "Name": "Via Vivaio (Sotto Bologna)"
+  },
+  {
+    "Id": 18,
+    "Name": "Via Persicetana"
+  },
+  {
+    "Id": 19,
+    "Name": "Rotonda Bai"
+  },
+  {
+    "Id": 20,
+    "Name": "Via Giovanni Paolo II"
+  },
+  {
+    "Id": 21,
+    "Name": "Via Marcheselli"
+  },
+  {
+    "Id": 22,
+    "Name": "Rotonda Gandhi"
+  },
+  {
+    "Id": 23,
+    "Name": "Via Caduti di Ustica"
+  },
+  {
+    "Id": 24,
+    "Name": "Rotonda Gandhi"
+  },
+  {
+    "Id": 25,
+    "Name": "Via Armaroli"
+  },
+  {
+    "Id": 26,
+    "Name": "Via King"
+  },
+  {
+    "Id": 27,
+    "Name": "Via Rizzola Levante"
+  },
+  {
+    "Id": 28,
+    "Name": "Via del Campo"
+  },
+  {
+    "Id": 29,
+    "Name": "Via Collodi"
+  },
+  {
+    "Id": 30,
+    "Name": "Rotonda Pradazzo"
+  },
+  {
+    "Id": 31,
+    "Name": "Via Pradazzo"
+  },
+  {
+    "Id": 32,
+    "Name": "Via Garibaldi"
+  },
+  {
+    "Id": 33,
+    "Name": "Rotonda Bersaglieri"
+  },
+  {
+    "Id": 34,
+    "Name": "Via Rizzola Ponente"
+  },
+  {
+    "Id": 35,
+    "Name": "Via da Vinci"
+  },
+  {
+    "Id": 36,
+    "Name": "Via della Mimosa"
+  },
+  {
+    "Id": 37,
+    "Name": "Via Bazzane"
+  },
+  {
+    "Id": 38,
+    "Name": "Via Puccini"
+  },
+  {
+    "Id": 39,
+    "Name": "Via Roma"
+  },
+  {
+    "Id": 40,
+    "Name": "Via Armaroli"
+  }
 ]

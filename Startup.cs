@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
@@ -27,6 +28,7 @@ namespace ProCivReport
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5000/") }); //TODO: Mettere parametrico
             services.AddSingleton<WeatherForecastService>();
         }
 
