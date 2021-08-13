@@ -1,0 +1,41 @@
+@page "/pathlist"
+@using Microsoft.Extensions.Logging
+@inject ILogger<Paths> _logger
+@inject IJSRuntime _jsRuntime
+@inject HttpClient _http
+
+
+<h1>Scegliere percorso</h1>
+
+<EditForm Model="@_paths" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <p>
+        <label>
+            Percorsi:
+            <InputSelect @bind-Value="_paths.NrPath">
+                <option value="">Seleziona percorso...</option>
+                <option value="Nr1">Nr. 1</option>
+                <option value="Nr2">Nr. 2</option>
+                <option value="Nr3">Nr. 3</option>
+                <option value="Nr4">Nr. 4</option>
+                <option value="Nr5">Nr. 5</option>
+            </InputSelect>
+        </label>
+
+        <button type="submit">Ok</button>
+    </p>
+
+    @if (_paths.StreetList.Count > 0)
+    {
+        <h2>Percorso Nr° @_nrPaths</h2>
+    }
+
+    <ul style="list-style-type: none;">
+
+        @foreach (var street in _paths.StreetList)
+        {
+            <li><input type="checkbox" id="@street.Id" value="@street.Name" disable="" @onclick="eventArgs => { HasClicked(street.Id); }" /> @street.Name </li>
+        }
+    </ul>
+</EditForm>
