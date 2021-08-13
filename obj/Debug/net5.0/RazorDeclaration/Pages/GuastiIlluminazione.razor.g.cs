@@ -102,6 +102,20 @@ using System;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\Pages\GuastiIlluminazione.razor"
+using System.Runtime.CompilerServices;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\Pages\GuastiIlluminazione.razor"
+using ProCivReport.Models;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/guasti")]
     public partial class GuastiIlluminazione : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -111,11 +125,16 @@ using System;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 27 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\Pages\GuastiIlluminazione.razor"
+#line 30 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\Pages\GuastiIlluminazione.razor"
        
     private Paths paths = new() { StreetList = new List<Street>() };
 
-    private void HandleValidSubmit() { }
+    private string[] WeatherForecast;
+
+    private async Task HandleValidSubmit()
+    {
+        WeatherForecast = await _http.GetFromJsonAsync<string[]>("api/Values");
+    }
 
     private int MaxNumber = 1;
 
@@ -127,6 +146,7 @@ using System;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient _http { get; set; }
     }
 }
 #pragma warning restore 1591

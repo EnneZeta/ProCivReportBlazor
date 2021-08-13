@@ -1,6 +1,7 @@
 ﻿@page "/servicereport"
 
 @using ProCivReport.Data
+@using ProCivReport.Models
 
 
 <h1>Rapporto di Servizio</h1>
@@ -24,36 +25,39 @@
     </div>
 
     <div style="border: 1px solid black; padding: 25px; width: 65%; margin: 15px;">
-        <label><strong>Caposquadra: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
-        <label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
-        <label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
-        <label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
-        <label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
-        <label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
-        <label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
-        <label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
-        <label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
-        <label><strong>Addetto: </strong><input type="text" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" /></label><br />
+        <label><strong>Caposquadra: </strong><input type="text" id="capoSquadra" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" id="badgeIdCaposquadra" /></label><br />
+        <label><strong>Addetto: </strong><input type="text" id="addetto1" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" id="badgeId1" /></label>
+        <input type="button" value="Aggiungi Addetto" @onclick="e => { AddOperator(); }" /><br />
+        
+        @for (int i = 0; i < _maxOperatorNumber; i++)
+        {
+            <label><strong>Addetto: </strong><input type="text" id="@("addetto" + (i+2))" /></label> <label><strong>Matricola: </strong><input type="text" id="@("badgeId" + (i+2))" /></label><br />
+        }
     </div>
 
     <div style="border: 1px solid black; padding: 25px; width: 65%; margin: 15px;">
         <label>
             <h3>VEICOLI: </h3>
-            <label><strong>Mezzo: </strong><input type="text" /></label>&nbsp;<label><strong>Targa: </strong><input type="text" /></label>&nbsp;<label><strong>TOT KM: </strong><input type="text" /></label><br />
-            <label><strong>Mezzo: </strong><input type="text" /></label>&nbsp;<label><strong>Targa: </strong><input type="text" /></label>&nbsp;<label><strong>TOT KM: </strong><input type="text" /></label><br />
-            <label><strong>Mezzo: </strong><input type="text" /></label>&nbsp;<label><strong>Targa: </strong><input type="text" /></label>&nbsp;<label><strong>TOT KM: </strong><input type="text" /></label><br />
+            <label><strong>Mezzo: </strong><input type="text" id="type1" /></label>&nbsp;<label><strong>Targa: </strong><input type="text" id="plate1" /></label>&nbsp;<label><strong>TOT KM: </strong><input type="text" id="totKm1" /></label>
+            <input type="button" value="Aggiungi Veicolo" @onclick="e => { AddVehicle(); }" /><br />
+
+            @for (int i = 0; i < _maxVehicleNumber; i++)
+            {
+                <label><strong>Mezzo: </strong><input type="text" id="@("type" + (i+2))" /></label> <label><strong>Targa: </strong><input type="text" id="@("plate" + (i+2))" /></label> <label><strong>TOT KM: </strong><input type="text" id="@("totKm" + (i+2))" /></label><br />
+            }
+
         </label>
     </div>
 
     <div style="border: 1px solid black; padding: 25px; width: 65%; margin: 15px;">
         <label>
             <h3>1° Gruppo: </h3>
-            <label><strong>Ora di Partenza: </strong><input type="time" @bind="FirstDepHour" /></label>&nbsp;<label><strong>Ora di Arrivo: </strong><input type="time" @bind="FirstArrHour" /></label>&nbsp;<label><strong>Ore Totali: </strong><input type="text" @onfocus="eventArgs => { CalculateGroup(1); }" value="@FirstTotalHour"/></label><br />
+            <label><strong>Ora di Partenza: </strong><input type="time" @bind="_serviceReport.FirstGroup.DepartureTime" /></label>&nbsp;<label><strong>Ora di Arrivo: </strong><input type="time" @bind="_serviceReport.FirstGroup.ArrivalTime" /></label>&nbsp;<label><strong>Ore Totali: </strong><input type="text" @onfocus="eventArgs => { CalculateGroup(1); }" value="@_serviceReport.FirstGroup.TotalHours"/></label><br />
         </label>
 
         <label>
             <h3>2° Gruppo: </h3>
-            <label><strong>Ora di Partenza: </strong><input type="time" @bind="SecondDepHour"/></label>&nbsp;<label><strong>Ora di Arrivo: </strong><input type="time" @bind="SecondArrHour"/></label>&nbsp;<label><strong>Ore Totali: </strong><input type="text" @onfocus="eventArgs => { CalculateGroup(2); }" value="@SecondTotalHour" /></label><br />
+            <label><strong>Ora di Partenza: </strong><input type="time" @bind="_serviceReport.SecondGroup.DepartureTime"/></label>&nbsp;<label><strong>Ora di Arrivo: </strong><input type="time" @bind="_serviceReport.SecondGroup.ArrivalTime"/></label>&nbsp;<label><strong>Ore Totali: </strong><input type="text" @onfocus="eventArgs => { CalculateGroup(2); }" value="@_serviceReport.SecondGroup.TotalHours" /></label><br />
         </label>
     </div>
 
@@ -68,7 +72,12 @@
 @code {
     private Paths paths = new() { StreetList = new List<Street>() };
 
-    private void HandleValidSubmit() { }
+    private ServiceReportDto _serviceReport = new ServiceReportDto();
+
+    private void HandleValidSubmit()
+    {
+        
+    }
 
     private DateTime FirstDepHour;
     private DateTime FirstArrHour;
@@ -77,13 +86,27 @@
     private string FirstTotalHour;
     private string SecondTotalHour;
 
+    private int _maxOperatorNumber = 0;
+    private int _maxVehicleNumber = 0;
+
+
     private void CalculateGroup(int groupNumber)
     {
 
-        var difference = groupNumber == 1 ? FirstArrHour.Subtract(FirstDepHour) : SecondArrHour.Subtract(SecondDepHour);
+        var difference = groupNumber == 1 ? _serviceReport.FirstGroup.ArrivalTime.Subtract(_serviceReport.FirstGroup.DepartureTime) : _serviceReport.SecondGroup.ArrivalTime.Subtract(_serviceReport.SecondGroup.DepartureTime);
         if (groupNumber == 1)
-            FirstTotalHour = difference.TotalHours.ToString();
+            _serviceReport.FirstGroup.TotalHours = (int)difference.TotalHours;
         else
-            SecondTotalHour = difference.TotalHours.ToString();
+            _serviceReport.SecondGroup.TotalHours = (int)difference.TotalHours;
+    }
+
+    private void AddOperator()
+    {
+        _maxOperatorNumber++;
+    }
+
+    private void AddVehicle()
+    {
+        _maxVehicleNumber++;
     }
 }

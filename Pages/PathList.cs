@@ -2,13 +2,13 @@
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Microsoft.JSInterop;
+using ProCivReport.Models;
 
 namespace ProCivReport.Pages
 {
     public partial class PathList
     {
         private readonly Paths _paths = new() { StreetList = new List<Street>() };
-
         private int _nrPaths = 0;
 
         private async Task HasClicked(int checkId)
@@ -37,7 +37,6 @@ namespace ProCivReport.Pages
                 _paths.StreetList.AddRange(path002);
 
                 _nrPaths = 2;
-
             }
 
             if (_paths.NrPath == "Nr3")
@@ -46,7 +45,6 @@ namespace ProCivReport.Pages
                 _paths.StreetList.AddRange(path003);
 
                 _nrPaths = 3;
-
             }
 
             if (_paths.NrPath == "Nr4")
@@ -55,7 +53,6 @@ namespace ProCivReport.Pages
                 _paths.StreetList.AddRange(path004);
 
                 _nrPaths = 4;
-
             }
 
             if (_paths.NrPath == "Nr5")
@@ -64,7 +61,6 @@ namespace ProCivReport.Pages
                 _paths.StreetList.AddRange(path005);
 
                 _nrPaths = 5;
-
             }
         }
     }

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.JSInterop;
 using ProCivReport.Data;
 
 namespace ProCivReport
@@ -33,6 +35,8 @@ namespace ProCivReport
             services.AddServerSideBlazor();
             services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5000/") }); //TODO: Mettere parametrico
             services.AddSingleton<WeatherForecastService>();
+            services.AddMvc(options => options.EnableEndpointRouting = false)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,6 +54,8 @@ namespace ProCivReport
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseMvcWithDefaultRoute();
 
             app.UseEndpoints(endpoints =>
             {
