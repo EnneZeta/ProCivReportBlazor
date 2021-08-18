@@ -35,6 +35,7 @@
     private async Task HandleValidSubmit()
     {
         WeatherForecast = await _http.GetFromJsonAsync<string[]>("api/Values");
+
     }
 
     private int MaxNumber = 1;

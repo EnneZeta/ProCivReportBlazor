@@ -128,3 +128,10 @@ C:\Users\zazzaroa\source\repos\ProCivReportBlazor\obj\Debug\net5.0\RazorDeclarat
 C:\Users\zazzaroa\source\repos\ProCivReportBlazor\obj\Debug\net5.0\Razor\Pages\PathList.razor.g.cs
 C:\Users\zazzaroa\source\repos\ProCivReportBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\ServiceReport.razor.g.cs
 C:\Users\zazzaroa\source\repos\ProCivReportBlazor\obj\Debug\net5.0\Razor\Pages\ServiceReport.razor.g.cs
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\Dapper.dll
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\System.Data.SqlClient.dll
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\runtimes\win-arm64\native\sni.dll
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\runtimes\win-x64\native\sni.dll
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\runtimes\win-x86\native\sni.dll
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

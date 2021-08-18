@@ -2,7 +2,7 @@
 
 @using ProCivReport.Data
 @using ProCivReport.Models
-
+@inject HttpClient _http
 
 <h1>Rapporto di Servizio</h1>
 
@@ -28,7 +28,7 @@
         <label><strong>Caposquadra: </strong><input type="text" id="capoSquadra" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" id="badgeIdCaposquadra" /></label><br />
         <label><strong>Addetto: </strong><input type="text" id="addetto1" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" id="badgeId1" /></label>
         <input type="button" value="Aggiungi Addetto" @onclick="e => { AddOperator(); }" /><br />
-        
+
         @for (int i = 0; i < _maxOperatorNumber; i++)
         {
             <label><strong>Addetto: </strong><input type="text" id="@("addetto" + (i+2))" /></label> <label><strong>Matricola: </strong><input type="text" id="@("badgeId" + (i+2))" /></label><br />
@@ -52,12 +52,12 @@
     <div style="border: 1px solid black; padding: 25px; width: 65%; margin: 15px;">
         <label>
             <h3>1° Gruppo: </h3>
-            <label><strong>Ora di Partenza: </strong><input type="time" @bind="_serviceReport.FirstGroup.DepartureTime" /></label>&nbsp;<label><strong>Ora di Arrivo: </strong><input type="time" @bind="_serviceReport.FirstGroup.ArrivalTime" /></label>&nbsp;<label><strong>Ore Totali: </strong><input type="text" @onfocus="eventArgs => { CalculateGroup(1); }" value="@_serviceReport.FirstGroup.TotalHours"/></label><br />
+            <label><strong>Ora di Partenza: </strong><input type="time" @bind="_serviceReport.FirstGroup.DepartureTime" /></label>&nbsp;<label><strong>Ora di Arrivo: </strong><input type="time" @bind="_serviceReport.FirstGroup.ArrivalTime" /></label>&nbsp;<label><strong>Ore Totali: </strong><input type="text" @onfocus="eventArgs => { CalculateGroup(1); }" value="@_serviceReport.FirstGroup.TotalHours" /></label><br />
         </label>
 
         <label>
             <h3>2° Gruppo: </h3>
-            <label><strong>Ora di Partenza: </strong><input type="time" @bind="_serviceReport.SecondGroup.DepartureTime"/></label>&nbsp;<label><strong>Ora di Arrivo: </strong><input type="time" @bind="_serviceReport.SecondGroup.ArrivalTime"/></label>&nbsp;<label><strong>Ore Totali: </strong><input type="text" @onfocus="eventArgs => { CalculateGroup(2); }" value="@_serviceReport.SecondGroup.TotalHours" /></label><br />
+            <label><strong>Ora di Partenza: </strong><input type="time" @bind="_serviceReport.SecondGroup.DepartureTime" /></label>&nbsp;<label><strong>Ora di Arrivo: </strong><input type="time" @bind="_serviceReport.SecondGroup.ArrivalTime" /></label>&nbsp;<label><strong>Ore Totali: </strong><input type="text" @onfocus="eventArgs => { CalculateGroup(2); }" value="@_serviceReport.SecondGroup.TotalHours" /></label><br />
         </label>
     </div>
 
@@ -69,44 +69,4 @@
 
 
 </EditForm>
-@code {
-    private Paths paths = new() { StreetList = new List<Street>() };
 
-    private ServiceReportDto _serviceReport = new ServiceReportDto();
-
-    private void HandleValidSubmit()
-    {
-        
-    }
-
-    private DateTime FirstDepHour;
-    private DateTime FirstArrHour;
-    private DateTime SecondDepHour;
-    private DateTime SecondArrHour;
-    private string FirstTotalHour;
-    private string SecondTotalHour;
-
-    private int _maxOperatorNumber = 0;
-    private int _maxVehicleNumber = 0;
-
-
-    private void CalculateGroup(int groupNumber)
-    {
-
-        var difference = groupNumber == 1 ? _serviceReport.FirstGroup.ArrivalTime.Subtract(_serviceReport.FirstGroup.DepartureTime) : _serviceReport.SecondGroup.ArrivalTime.Subtract(_serviceReport.SecondGroup.DepartureTime);
-        if (groupNumber == 1)
-            _serviceReport.FirstGroup.TotalHours = (int)difference.TotalHours;
-        else
-            _serviceReport.SecondGroup.TotalHours = (int)difference.TotalHours;
-    }
-
-    private void AddOperator()
-    {
-        _maxOperatorNumber++;
-    }
-
-    private void AddVehicle()
-    {
-        _maxVehicleNumber++;
-    }
-}

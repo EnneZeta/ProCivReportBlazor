@@ -89,6 +89,20 @@ using ProCivReport.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 12 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\_Imports.razor"
+using System.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 13 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\_Imports.razor"
+using System.Data.SqlClient;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\Pages\GuastiIlluminazione.razor"
 using ProCivReport.Data;
 
@@ -134,6 +148,7 @@ using ProCivReport.Models;
     private async Task HandleValidSubmit()
     {
         WeatherForecast = await _http.GetFromJsonAsync<string[]>("api/Values");
+
     }
 
     private int MaxNumber = 1;

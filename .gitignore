@@ -16,6 +16,19 @@
 # Mono auto generated files
 mono_crash.*
 
+packages/**
+obj/**
+publish_svc/**
+*.user
+*.suo
+*.orig
+**/packages/*
+**/bin/**
+**/obj/**
+**/obj/*
+xml_diff_util/results/*
+**/.vs/**
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
