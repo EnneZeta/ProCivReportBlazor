@@ -15,11 +15,39 @@ a, .btn-link {
     border-color: #1861ac;
 }
 
-ul {
-    columns: 2;
-    -webkit-columns: 2;
-    -moz-columns: 2;
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    ul {
+        columns: 1;
+        -webkit-columns: 1;
+        -moz-columns: 1;
+    }
+
+    .divService {
+        border: 1px solid black;
+        padding: 10px;
+        margin: 5px;
+        width: 100%;
+    }
 }
+
+@media only screen and (min-width: 770px) {
+    /* For mobile phones: */
+    ul {
+        columns: 2;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+    }
+
+    .divService {
+        border: 1px solid black; 
+        padding: 25px; 
+        width: 65%; 
+        margin: 15px;
+    }
+}
+
+
 
 .content {
     padding-top: 1.1rem;
