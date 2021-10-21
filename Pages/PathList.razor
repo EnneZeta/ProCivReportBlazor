@@ -36,7 +36,7 @@
 
         @foreach (var street in _paths.StreetList)
         {
-            <li><input type="checkbox" id="@street.Id" value="@street.Name" disable="" @onclick="eventArgs => { HasClicked(street.Id); }" /> @street.Name </li>
+            <li><input type="checkbox" id="@street.Id" checked="@street.AlreadyChecked" value="@street.Name" disabled="@street.AlreadyChecked" @onclick="eventArgs => { HasClicked(street.Id, _nrPaths); }" /> @street.Name </li>
         }
     </ul>
 </EditForm>
