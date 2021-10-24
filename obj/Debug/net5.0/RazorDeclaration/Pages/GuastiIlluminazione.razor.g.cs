@@ -139,15 +139,15 @@ using ProCivReport.Models;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 30 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\Pages\GuastiIlluminazione.razor"
+#line 31 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\Pages\GuastiIlluminazione.razor"
        
-    private Paths paths = new() { StreetList = new List<Street>() };
+    private LightingBreakdownsDto lightingBreakdowns = new() {  };
 
     private string[] WeatherForecast;
 
     private async Task HandleValidSubmit()
     {
-        WeatherForecast = await _http.GetFromJsonAsync<string[]>("api/Values");
+        await _jsRuntime.InvokeAsync<string>("lightingBreakdownsStorage", MaxNumber);
 
     }
 
@@ -162,6 +162,7 @@ using ProCivReport.Models;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient _http { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime _jsRuntime { get; set; }
     }
 }
 #pragma warning restore 1591

@@ -14,7 +14,7 @@ namespace ProCivReport.Data
 
         void Save(List<Street> streets);
 
-        void Save(List<LightingBreakdonwsDto> lightingBreakdon);
+        void Save(List<LightingBreakdownsDto> lightingBreakdon);
     }
 
     public class Repo : IRepo
@@ -42,7 +42,7 @@ namespace ProCivReport.Data
             }
         }
 
-        public void Save(List<LightingBreakdonwsDto> lightingBreakdon)
+        public void Save(List<LightingBreakdownsDto> lightingBreakdon)
         {
             throw new System.NotImplementedException();
         }

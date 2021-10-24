@@ -13,6 +13,9 @@ namespace ProCivReport.Models
             SecondGroup = new SecondGroup();
             Operators = new List<Operator>();
             Vehicles = new List<Vehicle>();
+            Other = new BoolWithNote();
+            Emergency = new BoolWithNote();
+            TeamLeader = new Operator();
         }
 
         public string ReportNumber { get; set; }
@@ -32,6 +35,8 @@ namespace ProCivReport.Models
         public BoolWithNote Emergency { get; set; }
 
         public BoolWithNote Other { get; set; }
+
+        public Operator TeamLeader { get; set; }
 
         public List<Operator> Operators { get; set; }
 
@@ -86,3 +91,5 @@ namespace ProCivReport.Models
 
     }
 }
+
+

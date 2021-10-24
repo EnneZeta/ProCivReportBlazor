@@ -17,11 +17,10 @@ namespace ProCivReport.Controllers
             _repo = repo;
         }
 
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpPost]
+        public void Post(Persistency persistency)
         {
             _repo.Save(new List<Street>());
-            return new List<string>();
         }
     }
 }

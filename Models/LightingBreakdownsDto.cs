@@ -1,6 +1,6 @@
 ﻿namespace ProCivReport.Models
 {
-    public class LightingBreakdonwsDto
+    public class LightingBreakdownsDto
     {
     }
 }

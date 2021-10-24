@@ -2,67 +2,72 @@
 
 @using ProCivReport.Data
 @using ProCivReport.Models
+@using System.Reflection.Metadata
+@inject IJSRuntime _jsRuntime
 @inject HttpClient _http
+@inject Persistency _persistency
 
 <h1>Rapporto di Servizio</h1>
 
-<EditForm Model="@paths" OnValidSubmit="@HandleValidSubmit">
+<EditForm Model="@_persistency.ServiceReport" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
     <div class="divService">
-        <label><strong>Verbale Nr: </strong><input type="text" /></label>
-        <label><strong>Data: </strong><input type="date" /></label>
+        <label><strong>Verbale Nr: </strong><input type="text" id="reportNumber" @bind="_persistency.ServiceReport.ReportNumber" /></label>
+        <label><strong>Data: </strong><input type="date" id="date" @bind="_persistency.ServiceReport.Date" /></label>
         <ul style="list-style-type: none;">
-            <li><input type="checkbox" />  Monitoraggio Territorio  </li>
-            <li><input type="checkbox" />  Esercitazione </li>
-            <li><input type="checkbox" />  Gest. Attrezzatura/Sede  </li>
-            <li><input type="checkbox" />  COR/SOUP  </li>
-            <li><input type="checkbox" />  Corso Formazione  </li>
-            <li><input type="checkbox" />  Emergenza  <input type="text" /></li>
-            <li><input type="checkbox" />  Altro  <input type="text" /></li>
+            <li><input type="checkbox" id="task1" value="LandMonitoring" @bind="_persistency.ServiceReport.LandMonitoring" />  Monitoraggio Territorio  </li>
+            <li><input type="checkbox" id="task2" value="Drill" @bind="_persistency.ServiceReport.Drill" />  Esercitazione </li>
+            <li><input type="checkbox" id="task3" value="ToolOfficeManagement" @bind="_persistency.ServiceReport.ToolOfficeManagement" />  Gest. Attrezzatura/Sede  </li>
+            <li><input type="checkbox" id="task4" value="CorSoup" @bind="_persistency.ServiceReport.CorSoup" />  COR/SOUP  </li>
+            <li><input type="checkbox" id="task5" value="TrainingCourse" @bind="_persistency.ServiceReport.TrainingCourse" />  Corso Formazione  </li>
+            <li><input type="checkbox" id="task6" value="Emergency" @bind="_persistency.ServiceReport.Emergency.IsChecked" />  Emergenza  <input type="text" id="noteForEmergency "@bind="_persistency.ServiceReport.Emergency.Note"  /></li>
+            <li><input type="checkbox" id="task7" value="Other" @bind="_persistency.ServiceReport.Other.IsChecked" />  Altro  <input type="text" id="noteForOther" @bind="_persistency.ServiceReport.Other.Note"/></li>
         </ul>
     </div>
 
     <div class="divService">
-        <label><strong>Caposquadra: </strong><input type="text" id="capoSquadra" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" id="badgeIdCaposquadra" /></label><br />
-        <label><strong>Addetto: </strong><input type="text" id="addetto1" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" id="badgeId1" /></label>
-        <input type="button" value="Aggiungi Addetto" @onclick="e => { AddOperator(); }" /><br />
+        <label><strong>Caposquadra: </strong><input type="text" id="capoSquadra" @bind="_persistency.ServiceReport.TeamLeader.FullName"/></label>&nbsp;<label><strong>Matricola: </strong><input type="text" id="badgeIdCaposquadra" @bind="_persistency.ServiceReport.TeamLeader.BadgeId" /></label><br />
+        @*<label><strong>Addetto: </strong><input type="text" id="addetto1" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" id="badgeId1" /></label>*@
+        <input type="button" value="Aggiungi Addetto" @onclick="e => { AddOperator(); }" /><br /><br />
 
-        @for (int i = 0; i < _maxOperatorNumber; i++)
+        @for (var i = 0; i < _maxOperatorNumber; i++)
         {
-            <label><strong>Addetto: </strong><input type="text" id="@("addetto" + (i+2))" /></label> <label><strong>Matricola: </strong><input type="text" id="@("badgeId" + (i+2))" /></label><br />
+            var localVariable = i;
+            <label><strong>Addetto: </strong><input type="text" id="@("addetto" + (i))" @bind="serviceReport.Operators[localVariable].FullName" /></label> <label><strong>Matricola: </strong><input type="text" id="@("badgeId" + (i))" @bind="serviceReport.Operators[localVariable].BadgeId" /></label><br />
         }
+
     </div>
 
     <div class="divService">
         <label>
             <h3>VEICOLI: </h3>
-            <label><strong>Mezzo: </strong><input type="text" id="type1" /></label>&nbsp;<label><strong>Targa: </strong><input type="text" id="plate1" /></label>&nbsp;<label><strong>TOT KM: </strong><input type="text" id="totKm1" /></label>
-            <input type="button" value="Aggiungi Veicolo" @onclick="e => { AddVehicle(); }" /><br />
+            @*<label><strong>Mezzo: </strong><input type="text" id="type1" /></label>&nbsp;<label><strong>Targa: </strong><input type="text" id="plate1" /></label>&nbsp;<label><strong>TOT KM: </strong><input type="text" id="totKm1" /></label>*@
+            <input type="button" value="Aggiungi Veicolo" @onclick="e => { AddVehicle(); }" /><br /><br />
 
-            @for (int i = 0; i < _maxVehicleNumber; i++)
+            @for (var i = 0; i < _maxVehicleNumber; i++)
             {
-                <label><strong>Mezzo: </strong><input type="text" id="@("type" + (i+2))" /></label> <label><strong>Targa: </strong><input type="text" id="@("plate" + (i+2))" /></label> <label><strong>TOT KM: </strong><input type="text" id="@("totKm" + (i+2))" /></label><br />
+                var localVariable = i;
+                <label><strong>Mezzo: </strong><input type="text" id="@("type" + (i))"  @bind="serviceReport.Vehicles[localVariable].Type" /></label> <label><strong>Targa: </strong><input type="text" id="@("plate" + (i))" @bind="serviceReport.Vehicles[localVariable].Plate"/></label> <label><strong>TOT KM: </strong><input type="text" id="@("totKm" + (i))" @bind="serviceReport.Vehicles[localVariable].TotKm"/></label><br />
             }
-
         </label>
     </div>
 
     <div class="divService">
         <label>
             <h3>1° Gruppo: </h3>
-            <label><strong>Ora di Partenza: </strong><input type="time" @bind="_serviceReport.FirstGroup.DepartureTime" /></label>&nbsp;<label><strong>Ora di Arrivo: </strong><input type="time" @bind="_serviceReport.FirstGroup.ArrivalTime" /></label>&nbsp;<label><strong>Ore Totali: </strong><input type="text" @onfocus="eventArgs => { CalculateGroup(1); }" value="@_serviceReport.FirstGroup.TotalHours" /></label><br />
+            <label><strong>Ora di Partenza: </strong><input type="time" @bind="_persistency.ServiceReport.FirstGroup.DepartureTime" id="firstDepartureTime" /></label>&nbsp;<label><strong>Ora di Arrivo: </strong><input type="time" @bind="_persistency.ServiceReport.FirstGroup.ArrivalTime" id="firstArrivalTime" /></label>&nbsp;<label><strong>Ore Totali: </strong><input type="text" id="firstTotalTime" @onfocus="eventArgs => { CalculateGroup(1); }" value="@_persistency.ServiceReport.FirstGroup.TotalHours" /></label><br />
         </label>
 
         <label>
             <h3>2° Gruppo: </h3>
-            <label><strong>Ora di Partenza: </strong><input type="time" @bind="_serviceReport.SecondGroup.DepartureTime" /></label>&nbsp;<label><strong>Ora di Arrivo: </strong><input type="time" @bind="_serviceReport.SecondGroup.ArrivalTime" /></label>&nbsp;<label><strong>Ore Totali: </strong><input type="text" @onfocus="eventArgs => { CalculateGroup(2); }" value="@_serviceReport.SecondGroup.TotalHours" /></label><br />
+            <label><strong>Ora di Partenza: </strong><input type="time" @bind="_persistency.ServiceReport.SecondGroup.DepartureTime" id="secondDepartureTime" /></label>&nbsp;<label><strong>Ora di Arrivo: </strong><input type="time" @bind="_persistency.ServiceReport.SecondGroup.ArrivalTime" id="secondArrivalTime" /></label>&nbsp;<label><strong>Ore Totali: </strong><input type="text" id="secondTotalTime" @onfocus="eventArgs => { CalculateGroup(2); }" value="@_persistency.ServiceReport.SecondGroup.TotalHours" /></label><br />
         </label>
     </div>
 
     <div class="divService">
-        <label><strong>Note: </strong><textarea> </textarea></label>
+        <label><strong>Note: </strong><textarea id="note" @bind="_persistency.ServiceReport.Note"> </textarea></label>
     </div>
 
     <button type="submit">Salva</button>

@@ -3,18 +3,19 @@
 @using System
 @using System.Runtime.CompilerServices
 @using ProCivReport.Models
+@inject IJSRuntime _jsRuntime
 @inject HttpClient _http
 
 <h1>Segnalazione Guasti Pubblica Illuminazione</h1>
 
 
 
-<EditForm Model="@paths" OnValidSubmit="@HandleValidSubmit">
+<EditForm Model="@lightingBreakdowns" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <p>
-        <label><strong>Allegato al Verbale Nr: </strong><input type="text" /></label>
-        <label><strong>del: </strong><input type="text" /></label>
+        <label><strong>Allegato al Verbale Nr: </strong><input type="text" id="reportNumber" /></label>
+        <label><strong>del: </strong><input type="text" id="date" /></label>
         <input type="button" value="Aggiungi riga" @onclick="e => { AddRow(); }" />
     </p>
     @for (int i = 0; i < MaxNumber; i++)
@@ -28,13 +29,13 @@
     <button type="submit">Salva</button>
 </EditForm>
 @code {
-    private Paths paths = new() { StreetList = new List<Street>() };
+    private LightingBreakdownsDto lightingBreakdowns = new() {  };
 
     private string[] WeatherForecast;
 
     private async Task HandleValidSubmit()
     {
-        WeatherForecast = await _http.GetFromJsonAsync<string[]>("api/Values");
+        await _jsRuntime.InvokeAsync<string>("lightingBreakdownsStorage", MaxNumber);
 
     }
 

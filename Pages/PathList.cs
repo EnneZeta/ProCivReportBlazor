@@ -29,7 +29,7 @@ namespace ProCivReport.Pages
             {
                 var x = sessionPaths.Replace("[", "").Replace("]", "").Split(",").ToArray();
                 foreach (var s in x)
-                    p.StreetList.Add(new Street{Id = Convert.ToInt32(s), Name = string.Empty});
+                    p.StreetList.Add(new Street { Id = Convert.ToInt32(s), Name = string.Empty });
             }
 
             if (_paths.NrPath == "Nr1")
@@ -93,6 +93,8 @@ namespace ProCivReport.Pages
                         f.AlreadyChecked = true;
                 });
             }
+
+            _persistency.Paths = new Paths { NrPath = _nrPaths.ToString(), StreetList = _paths.StreetList.Where(w => w.AlreadyChecked).ToList() };
         }
     }
 }

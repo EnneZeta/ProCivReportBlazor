@@ -33,10 +33,11 @@ namespace ProCivReport
             //var j = x.HostEnvironment.BaseAddress;
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5000/") }); //TODO: Mettere parametrico
+            services.AddSingleton<Persistency>();
+            services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:32365/") }); //TODO: Mettere parametrico http://localhost:5000/ http://localhost:32365/
             services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<IRepo>(_ =>
-                new Repo("Data Source=sql5078.site4now.net;Initial Catalog=DB_A13944_ennezeta;User Id=DB_A13944_ennezeta_admin;Password=Dbsql1982!"));
+                new Repo(""));
             services.AddMvc(options => options.EnableEndpointRouting = false)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
