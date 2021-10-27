@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.JSInterop;
 using ProCivReport.Data;
+using ProCivReport.PdfBuilder;
 
 namespace ProCivReport
 {
@@ -29,15 +31,17 @@ namespace ProCivReport
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             //var x = WebAssemblyHostBuilder.CreateDefault();
             //var j = x.HostEnvironment.BaseAddress;
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<Persistency>();
-            services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:32365/") }); //TODO: Mettere parametrico http://localhost:5000/ http://localhost:32365/
+            services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5000/") }); //TODO: Mettere parametrico http://localhost:5000/ http://localhost:32365/
             services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<IRepo>(_ =>
                 new Repo(""));
+            services.AddSingleton<ServiceReportBuilder>();
             services.AddMvc(options => options.EnableEndpointRouting = false)
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }

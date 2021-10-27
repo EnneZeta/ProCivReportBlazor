@@ -21,7 +21,7 @@ namespace ProCivReport.Pages
         {
             //await _jsRuntime.InvokeVoidAsync("serviceReportStorage", _maxOperatorNumber, _maxVehicleNumber);
 
-            await _http.PostAsJsonAsync(new Uri("api/ServiceReport"), _persistency);
+            await _http.PostAsJsonAsync("api/ServiceReport", _persistency);
         }
 
         private void CalculateGroup(int groupNumber)
