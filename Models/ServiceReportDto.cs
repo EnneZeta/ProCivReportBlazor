@@ -16,6 +16,7 @@ namespace ProCivReport.Models
             Other = new BoolWithNote();
             Emergency = new BoolWithNote();
             TeamLeader = new Operator();
+            Date = DateTime.Now;
         }
 
         public string ReportNumber { get; set; }
