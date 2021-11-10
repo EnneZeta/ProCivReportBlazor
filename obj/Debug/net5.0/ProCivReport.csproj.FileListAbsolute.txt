@@ -145,3 +145,5 @@ C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\de\MigraDoc.D
 C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\de\MigraDoc.Rendering.resources.dll
 C:\Users\zazzaroa\source\repos\ProCivReportBlazor\bin\Debug\net5.0\de\MigraDoc.RtfRendering.resources.dll
 C:\Users\zazzaroa\source\repos\ProCivReportBlazor\obj\Debug\net5.0\ProCivReport.csprojAssemblyReference.cache
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\obj\Debug\net5.0\RazorDeclaration\Pages\Print.razor.g.cs
+C:\Users\zazzaroa\source\repos\ProCivReportBlazor\obj\Debug\net5.0\Razor\Pages\Print.razor.g.cs

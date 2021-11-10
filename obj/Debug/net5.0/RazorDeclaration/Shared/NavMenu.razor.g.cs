@@ -111,7 +111,7 @@ using System.Data.SqlClient;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\Shared\NavMenu.razor"
+#line 38 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

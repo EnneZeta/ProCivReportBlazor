@@ -56,7 +56,7 @@ namespace ProCivReport.Models
 
         public DateTime ArrivalTime { get; set; }
 
-        public int TotalHours { get; set; }
+        public string TotalHours { get; set; }
     }
 
     public class FirstGroup
@@ -65,7 +65,7 @@ namespace ProCivReport.Models
 
         public DateTime ArrivalTime { get; set; }
 
-        public int TotalHours { get; set; }
+        public string TotalHours { get; set; }
     }
 
     public class Vehicle

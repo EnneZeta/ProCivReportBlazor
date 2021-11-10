@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using ProCivReport.Models;
 using MigraDoc.DocumentObjectModel;
@@ -16,7 +17,14 @@ namespace ProCivReport.PdfBuilder
 
         public string Build(ServiceReportDto serviceReport)
         {
-            var path = $@"C:\temp\ServiceReport_{DateTime.Now:yyyyMMdd_hhmmss}.Pdf";
+            var year = DateTime.Now.Year.ToString("0000");
+            var month = DateTime.Now.Month.ToString("00");
+            var day = DateTime.Now.Day.ToString("00");
+            var mainPath = $@"./wwwroot/pdf/{year}/{month}/{day}/";
+            if (!Directory.Exists(mainPath))
+                Directory.CreateDirectory(mainPath);
+
+            var path = $@"{mainPath}/ServiceReport_{DateTime.Now:yyyyMMdd_hhmmss}.Pdf";
             Document = new Document
             {
                 Info = { Author = "Nello Zazzaro VPCC Calderara di Reno" },
@@ -116,8 +124,10 @@ namespace ProCivReport.PdfBuilder
             rowReportNumber.VerticalAlignment = VerticalAlignment.Center;
             rowReportNumber.HeadingFormat = true;
 
-            rowReportNumber.Cells[0].AddParagraph($"VERBALE N. {serviceReport.ReportNumber}");
-            rowReportNumber.Cells[1].AddParagraph($"DATA: {serviceReport.Date.ToString("dd/MM/yyyy")}");
+            var pReportNumber = new Paragraph().AddFormattedTextToParagraph("VERBALE NR: ", !string.IsNullOrEmpty(serviceReport.ReportNumber) ? serviceReport.ReportNumber : "", 14, 0);
+            var pReportData = new Paragraph().AddFormattedTextToParagraph("DATA: ", serviceReport.Date.ToString("dd/MM/yyyy"), 14, 0);
+            rowReportNumber.Cells[0].Add(pReportNumber);
+            rowReportNumber.Cells[1].Add(pReportData);
 
             GetEmptyRow(tableReportNumber, 1);
 
@@ -160,29 +170,52 @@ namespace ProCivReport.PdfBuilder
 
             var tableOperators = section.AddTable();
             tableOperators.Style = "Table";
-            tableOperators.Borders.Width = 1;
+            tableOperators.Borders.Width = 0;
             tableOperators.Rows.LeftIndent = Unit.FromCentimeter(leftIndentToCenterTable);
 
-            var columnOperators = tableOperators.AddColumn("18cm");
+            var columnOperators = tableOperators.AddColumn("9cm");
             columnOperators.Format.Alignment = ParagraphAlignment.Left;
+
+            var columnBadge = tableOperators.AddColumn("9cm");
+            columnBadge.Format.Alignment = ParagraphAlignment.Left;
+
+            var rowOperatorHeader = tableOperators.AddRow();
+            rowOperatorHeader.Height = 10;
+            rowOperatorHeader.VerticalAlignment = VerticalAlignment.Center;
+            rowOperatorHeader.HeadingFormat = true;
 
             var rowOperators = tableOperators.AddRow();
             rowOperators.Height = (serviceReport.Operators.Count + 1) * 10;
             rowOperators.VerticalAlignment = VerticalAlignment.Center;
             rowOperators.HeadingFormat = true;
 
-            var p = new Paragraph().AddFormattedTextWithTab("17.7cm", $"CAPOSQUADRA: {serviceReport.TeamLeader.FullName}",
-                $"MATRICOLA: {serviceReport.TeamLeader.BadgeId}", 14, false);
-            rowOperators.Cells[0].Add(p);
+            var pRowOperatorHeader = new Paragraph().AddFormattedTextWithTab("1cm", "OPERATORI", "", 14, true, "White");
+            rowOperatorHeader.Cells[0].Add(pRowOperatorHeader);
+            rowOperatorHeader.Cells[0].Shading = new Shading { Color = Colors.Black };
+            rowOperatorHeader.Cells[0].Format.Font.Color = Colors.White;
+            rowOperatorHeader.Cells[1].AddParagraph("");
+            rowOperatorHeader.Cells[1].Shading = new Shading { Color = Colors.Black };
+            rowOperatorHeader.Cells[1].Format.Font.Color = Colors.White;
+
+            var pOperator = new Paragraph().AddFormattedTextToParagraph("CAPOSQUADRA: ", !string.IsNullOrEmpty(serviceReport.TeamLeader.FullName) ? serviceReport.TeamLeader.FullName : "", 14, 0);
+            var pBadge = new Paragraph().AddFormattedTextToParagraph("MATRICOLA: ", !string.IsNullOrEmpty(serviceReport.TeamLeader.BadgeId) ? serviceReport.TeamLeader.BadgeId : "", 14, 0);
+            rowOperators.Cells[0].Add(pOperator);
+            rowOperators.Cells[1].Add(pBadge);
 
             foreach (var reportOperator in serviceReport.Operators)
             {
-                var pOps = new Paragraph().AddFormattedTextWithTab("17.7cm", $"ADDETTO: {reportOperator.FullName}",
-                    $"MATRICOLA: {reportOperator.BadgeId}", 14, false);
-                rowOperators.Cells[0].Add(pOps);
+                var pOperator1 = new Paragraph().AddFormattedTextToParagraph("ADDETTO: ", reportOperator.FullName, 14, 0);
+                var pBadge1 = new Paragraph().AddFormattedTextToParagraph("MATRICOLA: ", reportOperator.BadgeId, 14, 0);
+
+                rowOperators.Cells[0].Add(pOperator1);
+                rowOperators.Cells[1].Add(pBadge1);
             }
 
-            GetEmptyRow(tableOperators, 0);
+            tableOperators.SetEdge(0, 0, 2, 2, Edge.Left, BorderStyle.Single, 1);
+            tableOperators.SetEdge(0, 0, 2, 2, Edge.Right, BorderStyle.Single, 1);
+            tableOperators.SetEdge(0, 0, 2, 2, Edge.Bottom, BorderStyle.Single, 1);
+
+            GetEmptyRow(tableOperators, 1);
 
             #endregion
 
@@ -190,11 +223,17 @@ namespace ProCivReport.PdfBuilder
 
             var tableVehicles = section.AddTable();
             tableVehicles.Style = "Table";
-            tableVehicles.Borders.Width = 1;
+            tableVehicles.Borders.Width = 0;
             tableVehicles.Rows.LeftIndent = Unit.FromCentimeter(leftIndentToCenterTable);
 
-            var columnVehicles = tableVehicles.AddColumn("18cm");
+            var columnVehicles = tableVehicles.AddColumn("7cm");
             columnVehicles.Format.Alignment = ParagraphAlignment.Left;
+
+            var columnPlate = tableVehicles.AddColumn("7cm");
+            columnPlate.Format.Alignment = ParagraphAlignment.Left;
+
+            var columnTotKm = tableVehicles.AddColumn("4cm");
+            columnTotKm.Format.Alignment = ParagraphAlignment.Left;
 
             var rowVehicleHeader = tableVehicles.AddRow();
             rowVehicleHeader.Height = 10;
@@ -206,13 +245,31 @@ namespace ProCivReport.PdfBuilder
             rowVehicles.VerticalAlignment = VerticalAlignment.Center;
             rowVehicles.HeadingFormat = true;
 
-            rowVehicleHeader.Cells[0].AddParagraph("VEICOLI");
+            var pRowHeader = new Paragraph().AddFormattedTextWithTab("1cm", "VEICOLI", "", 14, true, "White");
+            rowVehicleHeader.Cells[0].Add(pRowHeader);
+            rowVehicleHeader.Cells[0].Shading = new Shading { Color = Colors.Black };
+            rowVehicleHeader.Cells[0].Format.Font.Color = Colors.White;
+            rowVehicleHeader.Cells[1].AddParagraph("");
+            rowVehicleHeader.Cells[1].Shading = new Shading { Color = Colors.Black };
+            rowVehicleHeader.Cells[1].Format.Font.Color = Colors.White;
+            rowVehicleHeader.Cells[2].AddParagraph("");
+            rowVehicleHeader.Cells[2].Shading = new Shading { Color = Colors.Black };
+            rowVehicleHeader.Cells[2].Format.Font.Color = Colors.White;
 
             foreach (var vehicle in serviceReport.Vehicles)
             {
-                var pv = new Paragraph().AddFormattedTextWithTab("9.7cm", "17.7cm", $"MEZZO: {vehicle.Type}", $"TARGA: {vehicle.Plate}", $"TOT KM: {vehicle.TotKm}", 14, false);
-                rowVehicles.Cells[0].Add(pv);
+                var pVehicle = new Paragraph().AddFormattedTextToParagraph("MEZZO: ", vehicle.Type, 14, 0);
+                var pPlate = new Paragraph().AddFormattedTextToParagraph("TARGA: ", vehicle.Plate, 14, 0);
+                var pTotKm = new Paragraph().AddFormattedTextToParagraph("TOT KM: ", vehicle.TotKm.ToString(), 14, 0);
+
+                rowVehicles.Cells[0].Add(pVehicle);
+                rowVehicles.Cells[1].Add(pPlate);
+                rowVehicles.Cells[2].Add(pTotKm);
             }
+
+            tableVehicles.SetEdge(0, 0, 3, 2, Edge.Left, BorderStyle.Single, 1);
+            tableVehicles.SetEdge(0, 0, 3, 2, Edge.Right, BorderStyle.Single, 1);
+            tableVehicles.SetEdge(0, 0, 3, 2, Edge.Bottom, BorderStyle.Single, 1);
 
             GetEmptyRow(tableVehicles, 0);
 
@@ -227,6 +284,11 @@ namespace ProCivReport.PdfBuilder
 
             var columnTime = tableTime.AddColumn("18cm");
             columnTime.Format.Alignment = ParagraphAlignment.Left;
+
+            var rowTimeHeader = tableTime.AddRow();
+            rowTimeHeader.Height = 10;
+            rowTimeHeader.VerticalAlignment = VerticalAlignment.Center;
+            rowTimeHeader.HeadingFormat = true;
 
             var rowTimeHeader1 = tableTime.AddRow();
             rowTimeHeader1.Height = 7;
@@ -248,6 +310,11 @@ namespace ProCivReport.PdfBuilder
             rowTime2.VerticalAlignment = VerticalAlignment.Center;
             rowTime2.HeadingFormat = true;
 
+            var pRowTimeHeader = new Paragraph().AddFormattedTextWithTab("1cm", "ORARI", "", 14, true, "White");
+            rowTimeHeader.Cells[0].Add(pRowTimeHeader);
+            rowTimeHeader.Cells[0].Shading = new Shading { Color = Colors.Black };
+            rowTimeHeader.Cells[0].Format.Font.Color = Colors.White;
+
             var firstGroup = new Paragraph();
             firstGroup.AddFormattedText("1° GRUPPO", new Font { Size = 10, Bold = true, Color = Colors.Black });
             rowTimeHeader1.Cells[0].Add(firstGroup);
@@ -262,11 +329,11 @@ namespace ProCivReport.PdfBuilder
             var time2 = new Paragraph().AddFormattedTextWithTab("12.7cm", "17.7cm", $"ORA DI PARTENZA: {serviceReport.SecondGroup.DepartureTime:HH:mm}", $"ORA DI ARRIVO: {serviceReport.SecondGroup.ArrivalTime:HH:mm}", $"ORE TOTALI: {serviceReport.SecondGroup.TotalHours}", 14, false);
             rowTime2.Cells[0].Add(time2);
 
-            tableTime.SetEdge(0, 0, 1, 4, Edge.Left, BorderStyle.Single, 1);
-            tableTime.SetEdge(0, 0, 1, 4, Edge.Right, BorderStyle.Single, 1);
-            tableTime.SetEdge(0, 0, 1, 4, Edge.Top, BorderStyle.Single, 1);
-            tableTime.SetEdge(0, 0, 1, 4, Edge.Bottom, BorderStyle.Single, 1);
-            
+            tableTime.SetEdge(0, 0, 1, 5, Edge.Left, BorderStyle.Single, 1);
+            tableTime.SetEdge(0, 0, 1, 5, Edge.Right, BorderStyle.Single, 1);
+            tableTime.SetEdge(0, 0, 1, 5, Edge.Top, BorderStyle.Single, 1);
+            tableTime.SetEdge(0, 0, 1, 5, Edge.Bottom, BorderStyle.Single, 1);
+
             GetEmptyRow(tableTime, 0);
 
             #endregion
@@ -288,15 +355,36 @@ namespace ProCivReport.PdfBuilder
 
             var rowNote = tableNote.AddRow();
             rowNote.Height = 150;
-            rowNote.VerticalAlignment = VerticalAlignment.Center;
+            rowNote.VerticalAlignment = VerticalAlignment.Top;
             rowNote.HeadingFormat = true;
 
             rowNoteHeader.Cells[0].AddParagraph("NOTE");
 
-            rowNote.Cells[0].AddParagraph(serviceReport.Note);
+            if (!string.IsNullOrEmpty(serviceReport.Note))
+                rowNote.Cells[0].AddParagraph(serviceReport.Note);
+            else
+                rowNote.Cells[0].AddParagraph("///");
 
             GetEmptyRow(tableNote, 0);
 
+            #endregion
+
+            #region Signature
+
+            var tableSignature = section.AddTable();
+            tableSignature.Style = "Table";
+            tableSignature.Borders.Width = 0;
+            tableSignature.Rows.LeftIndent = Unit.FromCentimeter(leftIndentToCenterTable);
+
+            var columnSignature = tableSignature.AddColumn("18cm");
+            columnSignature.Format.Alignment = ParagraphAlignment.Right;
+
+            var rowSignature = tableSignature.AddRow();
+            rowSignature.Height = 10;
+            rowSignature.VerticalAlignment = VerticalAlignment.Center;
+            rowSignature.HeadingFormat = true;
+
+            rowSignature.Cells[0].AddParagraph("IL CAPOSQUADRA");
 
             #endregion
         }

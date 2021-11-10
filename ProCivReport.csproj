@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>ac37d6d7-907a-40af-88c9-d7824c816ea4</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="PdfBuilder\" />
+    <Folder Include="wwwroot\pdf\" />
   </ItemGroup>
 
 </Project>

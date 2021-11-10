@@ -37,24 +37,7 @@
 
         @foreach (var street in _paths.StreetList)
         {
-            <li><input type="checkbox" id="@street.Id" checked="@street.AlreadyChecked" value="@street.Name" disabled="@street.AlreadyChecked" @onclick="eventArgs => { HasClicked(street.Id, _nrPaths); }" /> @street.Name </li>
-        }
-    </ul>
-    
-    
-    
-    <ul style="list-style-type: none;">
-
-        @foreach (var x in _persistency.ServiceReport.Operators)
-        {
-            <li>@x.FullName . @x.BadgeId</li>
-        }
-    </ul>
-    <ul style="list-style-type: none;">
-
-        @foreach (var x in _persistency.ServiceReport.Vehicles)
-        {
-            <li>@x.Type . @x.Plate . @x.TotKm</li>
+            <li><input type="checkbox" id="@street.Id" checked="@street.AlreadyChecked" value="@street.Name" disabled="@street.AlreadyChecked" @onclick="eventArgs => { HasClicked(street.Id, street.Name, _nrPaths); }" /> @street.Name </li>
         }
     </ul>
 </EditForm>

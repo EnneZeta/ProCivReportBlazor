@@ -28,41 +28,45 @@
     </div>
 
     <div class="divService">
-        <label><strong>Caposquadra: </strong><input type="text" id="capoSquadra" @bind="_persistency.ServiceReport.TeamLeader.FullName"/></label>&nbsp;<label><strong>Matricola: </strong><input type="text" id="badgeIdCaposquadra" @bind="_persistency.ServiceReport.TeamLeader.BadgeId" /></label><br />
-        @*<label><strong>Addetto: </strong><input type="text" id="addetto1" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" id="badgeId1" /></label>*@
-        <input type="button" value="Aggiungi Addetto" @onclick="e => { AddOperator(); }" /><br /><br />
+        <h3>OPERATORI: </h3>
+        <label><strong>Caposquadra: </strong><input type="text" id="capoSquadra" @bind="_persistency.ServiceReport.TeamLeader.FullName" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" id="badgeIdCaposquadra" @bind="_persistency.ServiceReport.TeamLeader.BadgeId" /></label><br />
 
         @for (var i = 0; i < _maxOperatorNumber; i++)
         {
             var localVariable = i;
-            <label><strong>Addetto: </strong><input type="text" id="@("addetto" + (i))" @bind="serviceReport.Operators[localVariable].FullName" /></label> <label><strong>Matricola: </strong><input type="text" id="@("badgeId" + (i))" @bind="serviceReport.Operators[localVariable].BadgeId" /></label><br />
+            <label><strong>Addetto: </strong><input type="text" id="@("addetto" + (i))" @bind="_serviceReport.Operators[localVariable].FullName" /></label>
+            <label><strong>Matricola: </strong><input type="text" id="@("badgeId" + (i))" @bind="_serviceReport.Operators[localVariable].BadgeId" /></label><br />
         }
-
+        <input type="button" value="Aggiungi Addetto" @onclick="e => { AddOperator(); }" /><br /><br />
     </div>
 
     <div class="divService">
-        <label>
-            <h3>VEICOLI: </h3>
-            @*<label><strong>Mezzo: </strong><input type="text" id="type1" /></label>&nbsp;<label><strong>Targa: </strong><input type="text" id="plate1" /></label>&nbsp;<label><strong>TOT KM: </strong><input type="text" id="totKm1" /></label>*@
-            <input type="button" value="Aggiungi Veicolo" @onclick="e => { AddVehicle(); }" /><br /><br />
 
-            @for (var i = 0; i < _maxVehicleNumber; i++)
+            <h3>VEICOLI: </h3>
+
+        @for (var i = 0; i < _maxVehicleNumber; i++)
             {
                 var localVariable = i;
-                <label><strong>Mezzo: </strong><input type="text" id="@("type" + (i))"  @bind="serviceReport.Vehicles[localVariable].Type" /></label> <label><strong>Targa: </strong><input type="text" id="@("plate" + (i))" @bind="serviceReport.Vehicles[localVariable].Plate"/></label> <label><strong>TOT KM: </strong><input type="text" id="@("totKm" + (i))" @bind="serviceReport.Vehicles[localVariable].TotKm"/></label><br />
+                <label><strong>Mezzo: </strong><input type="text" id="@("type" + (i))"  @bind="_serviceReport.Vehicles[localVariable].Type" /></label> 
+                <label><strong>Targa: </strong><input type="text" id="@("plate" + (i))" @bind="_serviceReport.Vehicles[localVariable].Plate"/></label> 
+                <label><strong>TOT KM: </strong><input type="text" id="@("totKm" + (i))" @bind="_serviceReport.Vehicles[localVariable].TotKm"/></label><br />
             }
-        </label>
+            <input type="button" value="Aggiungi Veicolo" @onclick="e => { AddVehicle(); }" /><br /><br />
     </div>
 
     <div class="divService">
         <label>
             <h3>1° Gruppo: </h3>
-            <label><strong>Ora di Partenza: </strong><input type="time" @bind="_persistency.ServiceReport.FirstGroup.DepartureTime" id="firstDepartureTime" /></label>&nbsp;<label><strong>Ora di Arrivo: </strong><input type="time" @bind="_persistency.ServiceReport.FirstGroup.ArrivalTime" id="firstArrivalTime" /></label>&nbsp;<label><strong>Ore Totali: </strong><input type="text" id="firstTotalTime" @onfocus="eventArgs => { CalculateGroup(1); }" value="@_persistency.ServiceReport.FirstGroup.TotalHours" /></label><br />
+            <label><strong>Ora di Partenza: </strong><input type="time" @onchange="eventArgs => { CalculateGroup(eventArgs, 0,1); }" id="firstDepartureTime" /></label>&nbsp;
+            <label><strong>Ora di Arrivo: </strong><input type="time" id="firstArrivalTime" @onchange="eventArgs => { CalculateGroup(eventArgs, 1, 1); }" /></label>&nbsp;
+            <label><strong>Ore Totali: </strong><input type="text" id="firstTotalTime"  value="@_persistency.ServiceReport.FirstGroup.TotalHours" readonly="readonly"/></label><br />
         </label>
 
         <label>
             <h3>2° Gruppo: </h3>
-            <label><strong>Ora di Partenza: </strong><input type="time" @bind="_persistency.ServiceReport.SecondGroup.DepartureTime" id="secondDepartureTime" /></label>&nbsp;<label><strong>Ora di Arrivo: </strong><input type="time" @bind="_persistency.ServiceReport.SecondGroup.ArrivalTime" id="secondArrivalTime" /></label>&nbsp;<label><strong>Ore Totali: </strong><input type="text" id="secondTotalTime" @onfocus="eventArgs => { CalculateGroup(2); }" value="@_persistency.ServiceReport.SecondGroup.TotalHours" /></label><br />
+            <label><strong>Ora di Partenza: </strong><input type="time" @onchange="eventArgs => { CalculateGroup(eventArgs,0,2); }" id="secondDepartureTime" /></label>&nbsp;
+            <label><strong>Ora di Arrivo: </strong><input type="time" @onchange="eventArgs => { CalculateGroup(eventArgs,1,2); }" id="secondArrivalTime" /></label>&nbsp;
+            <label><strong>Ore Totali: </strong><input type="text" id="secondTotalTime"  value="@_persistency.ServiceReport.SecondGroup.TotalHours" readonly="readonly" /></label><br />
         </label>
     </div>
 

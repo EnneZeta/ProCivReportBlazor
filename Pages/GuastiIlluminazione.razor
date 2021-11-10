@@ -5,44 +5,28 @@
 @using ProCivReport.Models
 @inject IJSRuntime _jsRuntime
 @inject HttpClient _http
+@inject Persistency _persistency
 
 <h1>Segnalazione Guasti Pubblica Illuminazione</h1>
 
 
 
-<EditForm Model="@lightingBreakdowns" OnValidSubmit="@HandleValidSubmit">
+<EditForm Model="@_persistency.LightingBreakdowns" OnValidSubmit="@HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
     <p>
-        <label><strong>Allegato al Verbale Nr: </strong><input type="text" id="reportNumber" /></label>
-        <label><strong>del: </strong><input type="text" id="date" /></label>
+        <label><strong>Allegato al Verbale Nr: </strong><input type="text" id="reportNumber" @bind="_persistency.ServiceReport.ReportNumber" /></label>
+        <label><strong>del: </strong><input type="text" id="date" @bind="_persistency.ServiceReport.Date"/></label>
         <input type="button" value="Aggiungi riga" @onclick="e => { AddRow(); }" />
     </p>
-    @for (int i = 0; i < MaxNumber; i++)
+    @for (int i = 0; i < _maxNumber; i++)
     {
-        <label><strong>Lampione N.: </strong><input type="text" id="@("lamp" + i)" /></label>
-        <label><strong>Via: </strong><input type="text" id="@("via" + i)" /></label>
-        <label><strong>Civico: </strong><input type="text" id="@("civico" + i)" /></label>
+        var localVariable = i;
+        <label><strong>Lampione N.: </strong><input type="text" id="@("lamp" + i)" @bind="_lightingBreakdowns.Breaks[localVariable].Light" /></label>
+        <label><strong>Via: </strong><input type="text" id="@("via" + i)" @bind="_lightingBreakdowns.Breaks[localVariable].Street"/></label>
+        <label><strong>Civico: </strong><input type="text" id="@("civico" + i)" @bind="_lightingBreakdowns.Breaks[localVariable].StreetNumber"/></label>
         <br />
     }
 
     <button type="submit">Salva</button>
 </EditForm>
-@code {
-    private LightingBreakdownsDto lightingBreakdowns = new() {  };
-
-    private string[] WeatherForecast;
-
-    private async Task HandleValidSubmit()
-    {
-        await _jsRuntime.InvokeAsync<string>("lightingBreakdownsStorage", MaxNumber);
-
-    }
-
-    private int MaxNumber = 1;
-
-    private void AddRow()
-    {
-        MaxNumber++;
-    }
-}

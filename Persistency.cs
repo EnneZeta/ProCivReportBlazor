@@ -8,7 +8,7 @@ namespace ProCivReport
         public Persistency()
         {
             ServiceReport = new ServiceReportDto { Operators = new List<Operator>(), Vehicles = new List<Vehicle>() };
-            LightingBreakdowns = new LightingBreakdownsDto();
+            LightingBreakdowns = new LightingBreakdownsDto(){Breaks = new List<Break>()};
             Paths = new Paths { StreetList = new List<Street>() };
         }
 

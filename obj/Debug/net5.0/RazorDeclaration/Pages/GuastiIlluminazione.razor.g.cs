@@ -138,29 +138,7 @@ using ProCivReport.Models;
         {
         }
         #pragma warning restore 1998
-#nullable restore
-#line 31 "C:\Users\zazzaroa\source\repos\ProCivReportBlazor\Pages\GuastiIlluminazione.razor"
-       
-    private LightingBreakdownsDto lightingBreakdowns = new() {  };
-
-    private string[] WeatherForecast;
-
-    private async Task HandleValidSubmit()
-    {
-        await _jsRuntime.InvokeAsync<string>("lightingBreakdownsStorage", MaxNumber);
-
-    }
-
-    private int MaxNumber = 1;
-
-    private void AddRow()
-    {
-        MaxNumber++;
-    }
-
-#line default
-#line hidden
-#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private Persistency _persistency { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient _http { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IJSRuntime _jsRuntime { get; set; }
     }
