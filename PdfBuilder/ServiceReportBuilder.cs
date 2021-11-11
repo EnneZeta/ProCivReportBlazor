@@ -385,6 +385,7 @@ namespace ProCivReport.PdfBuilder
             rowSignature.HeadingFormat = true;
 
             rowSignature.Cells[0].AddParagraph("IL CAPOSQUADRA");
+            rowSignature.Cells[0].AddParagraph(serviceReport.TeamLeader.FullName);
 
             #endregion
         }

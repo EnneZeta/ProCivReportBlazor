@@ -16,7 +16,7 @@
     <ValidationSummary />
     <p>
         <label><strong>Allegato al Verbale Nr: </strong><input type="text" id="reportNumber" @bind="_persistency.ServiceReport.ReportNumber" /></label>
-        <label><strong>del: </strong><input type="text" id="date" @bind="_persistency.ServiceReport.Date"/></label>
+        <label><strong>del: </strong><input type="text" id="date" @bind="_persistency.ServiceReport.Date" @bind:format="dd/MM/yyyy"/></label>
         <input type="button" value="Aggiungi riga" @onclick="e => { AddRow(); }" />
     </p>
     @for (int i = 0; i < _maxNumber; i++)

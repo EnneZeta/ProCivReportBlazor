@@ -13,7 +13,7 @@ namespace ProCivReport.PdfBuilder
     {
         private Document Document { get; set; }
 
-        public string Build(LightingBreakdownsDto lightingBreakdowns)
+        public string Build(Persistency persistency)
         {
             var year = DateTime.Now.Year.ToString("0000");
             var month = DateTime.Now.Month.ToString("00");
@@ -37,7 +37,7 @@ namespace ProCivReport.PdfBuilder
                 }
             };
             DefineStyles();
-            CreateTable(lightingBreakdowns);
+            CreateTable(persistency);
             try
             {
                 var renderer = new PdfDocumentRenderer(true, PdfFontEmbedding.Always) { Document = Document };
@@ -53,7 +53,7 @@ namespace ProCivReport.PdfBuilder
             }
         }
 
-        private void CreateTable(LightingBreakdownsDto lightingBreakdownsDto)
+        private void CreateTable(Persistency persistency)
         {
             var section = Document.AddSection();
             section.PageSetup = Document.DefaultPageSetup.Clone();
@@ -121,8 +121,8 @@ namespace ProCivReport.PdfBuilder
             rowReportNumber.VerticalAlignment = VerticalAlignment.Center;
             rowReportNumber.HeadingFormat = true;
 
-            var pReportNumber = new Paragraph().AddFormattedTextToParagraph("ALLEGATO AL VERBALE NR: ", lightingBreakdownsDto.ReportNumber, 14, 0);
-            var pReportData = new Paragraph().AddFormattedTextToParagraph("DEL: ", lightingBreakdownsDto.Date.ToString("dd/MM/yyyy"), 14, 0);
+            var pReportNumber = new Paragraph().AddFormattedTextToParagraph("ALLEGATO AL VERBALE NR: ", persistency.LightingBreakdowns.ReportNumber, 14, 0);
+            var pReportData = new Paragraph().AddFormattedTextToParagraph("DEL: ", persistency.LightingBreakdowns.Date.ToString("dd/MM/yyyy"), 14, 0);
             rowReportNumber.Cells[0].Add(pReportNumber);
             rowReportNumber.Cells[1].Add(pReportData);
 
@@ -152,7 +152,7 @@ namespace ProCivReport.PdfBuilder
             rowBreakHeader.HeadingFormat = true;
 
             var rowBreaks = tableBreak.AddRow();
-            rowBreaks.Height = lightingBreakdownsDto.Breaks.Count * 10;
+            rowBreaks.Height = persistency.LightingBreakdowns.Breaks.Count * 10;
             rowBreaks.VerticalAlignment = VerticalAlignment.Center;
             rowBreaks.HeadingFormat = true;
 
@@ -167,7 +167,7 @@ namespace ProCivReport.PdfBuilder
             rowBreakHeader.Cells[2].Shading = new Shading { Color = Colors.Black };
             rowBreakHeader.Cells[2].Format.Font.Color = Colors.White;
 
-            foreach (var breakObj in lightingBreakdownsDto.Breaks)
+            foreach (var breakObj in persistency.LightingBreakdowns.Breaks)
             {
                 var pLamp = new Paragraph().AddFormattedTextToParagraph("LAMPIONE NR: ", breakObj.Light, 14, 0);
                 var pStreet = new Paragraph().AddFormattedTextToParagraph("VIA: ", breakObj.Street, 14, 0);
@@ -202,6 +202,7 @@ namespace ProCivReport.PdfBuilder
             rowSignature.HeadingFormat = true;
 
             rowSignature.Cells[0].AddParagraph("IL CAPOSQUADRA");
+            rowSignature.Cells[0].AddParagraph(persistency.ServiceReport.TeamLeader.FullName);
 
             #endregion
         }

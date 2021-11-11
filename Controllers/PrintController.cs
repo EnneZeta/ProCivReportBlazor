@@ -16,21 +16,28 @@ namespace ProCivReport.Controllers
         private readonly ServiceReportBuilder _serviceReportBuilder;
         private readonly LightingBreakdownsBuilder _lightingBreakdownsBuilder;
         private readonly PathBuilder _pathBuilder;
+        private readonly IMailSender _mailSender;
 
-        public PrintController(ServiceReportBuilder serviceReportBuilder, LightingBreakdownsBuilder lightingBreakdownsBuilder, PathBuilder pathBuilder)
+        public PrintController(ServiceReportBuilder serviceReportBuilder, LightingBreakdownsBuilder lightingBreakdownsBuilder, PathBuilder pathBuilder, IMailSender mailSender)
         {
             _serviceReportBuilder = serviceReportBuilder;
             _lightingBreakdownsBuilder = lightingBreakdownsBuilder;
             _pathBuilder = pathBuilder;
+            _mailSender = mailSender;
         }
 
         [HttpPost]
         public void Post(Persistency persistency)
         {
-            _serviceReportBuilder.Build(persistency.ServiceReport);
-            _lightingBreakdownsBuilder.Build(persistency.LightingBreakdowns);
-            _pathBuilder.Build(persistency.Paths);
+            var srPath = _serviceReportBuilder.Build(persistency.ServiceReport);
+            var lbPath = _lightingBreakdownsBuilder.Build(persistency);
+            var pPath = _pathBuilder.Build(persistency);
 
+
+            _mailSender.Send(new List<string>
+            {
+                srPath,lbPath, pPath
+            });
         }
     }
 }

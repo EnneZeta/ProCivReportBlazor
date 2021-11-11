@@ -12,8 +12,8 @@ namespace ProCivReport.PdfBuilder
     public class PathBuilder
     {
         private Document Document { get; set; }
-
-        public string Build(Paths paths)
+        
+        public string Build(Persistency persistency)
         {
             var year = DateTime.Now.Year.ToString("0000");
             var month = DateTime.Now.Month.ToString("00");
@@ -37,7 +37,7 @@ namespace ProCivReport.PdfBuilder
                 }
             };
             DefineStyles();
-            CreateTable(paths);
+            CreateTable(persistency);
             try
             {
                 var renderer = new PdfDocumentRenderer(true, PdfFontEmbedding.Always) { Document = Document };
@@ -53,7 +53,7 @@ namespace ProCivReport.PdfBuilder
             }
         }
 
-        private void CreateTable(Paths paths)
+        private void CreateTable(Persistency persistency)
         {
             var section = Document.AddSection();
             section.PageSetup = Document.DefaultPageSetup.Clone();
@@ -118,7 +118,7 @@ namespace ProCivReport.PdfBuilder
             rowReportNumber.VerticalAlignment = VerticalAlignment.Center;
             rowReportNumber.HeadingFormat = true;
 
-            var pPathNumber = new Paragraph().AddFormattedTextToParagraph("PERCORSO NR: ", paths.NrPath, 14, 0);
+            var pPathNumber = new Paragraph().AddFormattedTextToParagraph("PERCORSO NR: ", persistency.Paths.NrPath, 14, 0);
             rowReportNumber.Cells[0].Add(pPathNumber);
 
             GetEmptyRow(tableReportNumber, 0);
@@ -145,12 +145,12 @@ namespace ProCivReport.PdfBuilder
             columnStreet1.Format.Alignment = ParagraphAlignment.Left;
 
             var rowPaths = tablePaths.AddRow();
-            rowPaths.Height = paths.StreetList.Count * 10;
+            rowPaths.Height = persistency.Paths.StreetList.Count * 10;
             rowPaths.VerticalAlignment = VerticalAlignment.Top;
             rowPaths.HeadingFormat = true;
 
             var i = 0;
-            foreach (var street in paths.StreetList)
+            foreach (var street in persistency.Paths.StreetList)
             {
                 var cells0 = 0;
                 var cells1 = 1;
@@ -190,6 +190,7 @@ namespace ProCivReport.PdfBuilder
             rowSignature.HeadingFormat = true;
 
             rowSignature.Cells[0].AddParagraph("IL CAPOSQUADRA");
+            rowSignature.Cells[0].AddParagraph(persistency.ServiceReport.TeamLeader.FullName);
 
             #endregion
         }
