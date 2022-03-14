@@ -28,6 +28,8 @@ publish_svc/**
 **/obj/*
 xml_diff_util/results/*
 **/.vs/**
+obj/Debug/**
+obj/Debug/*
 
 # Build results
 [Dd]ebug/
