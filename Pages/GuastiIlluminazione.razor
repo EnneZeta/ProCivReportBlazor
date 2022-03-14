@@ -15,18 +15,18 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
     <p>
-        <label><strong>Allegato al Verbale Nr: </strong><input type="text" id="reportNumber" @bind="_persistency.ServiceReport.ReportNumber" /></label>
-        <label><strong>del: </strong><input type="text" id="date" @bind="_persistency.ServiceReport.Date" @bind:format="dd/MM/yyyy"/></label>
-        <input type="button" value="Aggiungi riga" @onclick="e => { AddRow(); }" />
+        <label><strong>Allegato al Verbale Nr: </strong><input type="text" id="reportNumber" @bind="_persistency.ServiceReport.ReportNumber" class="form-control" /></label>
+        <label><strong>del: </strong><input type="text" id="date" @bind="_persistency.ServiceReport.Date" @bind:format="dd/MM/yyyy" class="form-control"/></label>       
+        <button type="button" class="btn btn-secondary" @onclick="e => { AddRow(); }">Aggiungi riga</button>
     </p>
     @for (int i = 0; i < _maxNumber; i++)
     {
         var localVariable = i;
-        <label><strong>Lampione N.: </strong><input type="text" id="@("lamp" + i)" @bind="_lightingBreakdowns.Breaks[localVariable].Light" /></label>
-        <label><strong>Via: </strong><input type="text" id="@("via" + i)" @bind="_lightingBreakdowns.Breaks[localVariable].Street"/></label>
-        <label><strong>Civico: </strong><input type="text" id="@("civico" + i)" @bind="_lightingBreakdowns.Breaks[localVariable].StreetNumber"/></label>
+        <label><strong>Lampione N.: </strong><input type="text" id="@("lamp" + i)" @bind="_lightingBreakdowns.Breaks[localVariable].Light"  class="form-control"/></label>
+        <label><strong>Via: </strong><input type="text" id="@("via" + i)" @bind="_lightingBreakdowns.Breaks[localVariable].Street" class="form-control"/></label>
+        <label><strong>Civico: </strong><input type="text" id="@("civico" + i)" @bind="_lightingBreakdowns.Breaks[localVariable].StreetNumber" class="form-control"/></label>
         <br />
     }
 
-    <button type="submit">Salva</button>
+    <button type="submit" class="btn btn-secondary">Salva</button>
 </EditForm>

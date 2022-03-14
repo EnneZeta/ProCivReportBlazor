@@ -37,7 +37,7 @@ namespace ProCivReport
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<Persistency>();
-            services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:32365/") }); //TODO: Mettere parametrico http://localhost:5000/ http://localhost:32365/ http://vpcc.ennezeta.info/
+            services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5000/") }); //TODO: Mettere parametrico http://localhost:5000/ http://localhost:32365/ http://vpcc.ennezeta.info/
             services.AddSingleton<IRepo>(_ =>
                 new Repo(""));
             services.AddSingleton<ServiceReportBuilder>();

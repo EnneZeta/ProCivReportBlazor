@@ -14,18 +14,19 @@
     <ValidationSummary />
     <p>
         <label>
-            Percorsi:
-            <InputSelect @bind-Value="_paths.NrPath">
+            <span style="font-family:'Segoe UI';font-weight:bold;">Percorsi:</span>
+
+            <select class="form-control" @bind="_paths.NrPath">
                 <option value="">Seleziona percorso...</option>
                 <option value="Nr1">Nr. 1</option>
                 <option value="Nr2">Nr. 2</option>
                 <option value="Nr3">Nr. 3</option>
                 <option value="Nr4">Nr. 4</option>
                 <option value="Nr5">Nr. 5</option>
-            </InputSelect>
+            </select>
         </label>
 
-        <button type="submit">Ok</button>
+        <button type="submit" class="btn btn-secondary">Ok</button>
     </p>
 
     @if (_paths.StreetList.Count > 0)
@@ -37,7 +38,7 @@
 
         @foreach (var street in _paths.StreetList)
         {
-            <li><input type="checkbox" id="@street.Id" checked="@street.AlreadyChecked" value="@street.Name" disabled="@street.AlreadyChecked" @onclick="eventArgs => { HasClicked(street.Id, street.Name, _nrPaths); }" /> @street.Name </li>
+            <li><input type="checkbox" id="@street.Id" checked="@street.AlreadyChecked" value="@street.Name" disabled="@street.AlreadyChecked" @onclick="eventArgs => { HasClicked(street.Id, street.Name, _nrPaths); }" class="form-check-input"/> @street.Name </li>
         }
     </ul>
 </EditForm>
