@@ -23,7 +23,7 @@
             <li><input type="checkbox" id="task4" value="CorSoup" @bind="_persistency.ServiceReport.CorSoup" />  COR/SOUP  </li>
             <li><input type="checkbox" id="task5" value="TrainingCourse" @bind="_persistency.ServiceReport.TrainingCourse" />  Corso Formazione  </li>
             <li><input type="checkbox" id="task6" value="Emergency" @bind="_persistency.ServiceReport.Emergency.IsChecked" />  Emergenza  <input type="text" id="noteForEmergency "@bind="_persistency.ServiceReport.Emergency.Note"  /></li>
-            <li><input type="checkbox" id="task7" value="Other" @bind="_persistency.ServiceReport.Other.IsChecked" />  Altro  <input type="text" id="noteForOther" @bind="_persistency.ServiceReport.Other.Note"/></li>
+            <li><input type="checkbox" id="task7" value="Other" @bind="_persistency.ServiceReport.Other.IsChecked" />  Altro&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" id="noteForOther" @bind="_persistency.ServiceReport.Other.Note"/></li>
         </ul>
     </div>
 
@@ -34,7 +34,7 @@
         @for (var i = 0; i < _maxOperatorNumber; i++)
         {
             var localVariable = i;
-            <label><strong>Addetto: </strong><input type="text" id="@("addetto" + (i))" @bind="_serviceReport.Operators[localVariable].FullName" /></label>
+            <label><strong>Addetto&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp: </strong><input type="text" id="@("addetto" + (i))" @bind="_serviceReport.Operators[localVariable].FullName" /></label>
             <label><strong>Matricola: </strong><input type="text" id="@("badgeId" + (i))" @bind="_serviceReport.Operators[localVariable].BadgeId" /></label><br />
         }
         <input type="button" value="Aggiungi Addetto" @onclick="e => { AddOperator(); }" /><br /><br />
