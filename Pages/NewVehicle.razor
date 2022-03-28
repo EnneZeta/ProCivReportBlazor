@@ -1,0 +1,23 @@
+﻿@page "/newvehicle"
+
+@using ProCivReport.Data
+@using ProCivReport.Models
+@using System.Reflection.Metadata
+@inject IJSRuntime _jsRuntime
+@inject HttpClient _http
+@inject Persistency _persistency
+
+<h1> <span class="oi oi-compass" aria-hidden="true"></span> Inserisci Nuovo Veicolo</h1>
+
+<EditForm Model="@_persistency.ServiceReport">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="divService">
+        <label><strong>Veicolo: </strong><input type="text" id="newVehicleType" class="form-control" @bind="Type"/></label>&nbsp;
+        <label><strong>Targa: </strong><input type="text" id="newVehiclePlate" class="form-control" @bind="Plate"/></label><br />
+        <button type="button" class="btn btn-secondary" @onclick="e => { AddVehicle(); }">Aggiungi Veicolo</button>
+    </div>
+
+</EditForm>
+

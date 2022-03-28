@@ -16,28 +16,50 @@
     <div class="divService">
         <input type="text" class="form-control" id="reportNumber" @bind="_persistency.ServiceReport.ReportNumber" placeholder="Verbale Nr." />
         @*<label for="reportNumber">Verbale Nr.</label>*@
-        <label><strong>Data: </strong><input type="date" id="date" @bind="_persistency.ServiceReport.Date"  class="form-control"/></label>
+        <label><strong>Data: </strong><input type="date" id="date" @bind="_persistency.ServiceReport.Date" class="form-control" /></label>
         <ul style="list-style-type: none;">
-            <li><input type="checkbox" id="task1" value="LandMonitoring" @bind="_persistency.ServiceReport.LandMonitoring"  class="form-check-input"/>  Monitoraggio Territorio  </li>
-            <li><input type="checkbox" id="task2" value="Drill" @bind="_persistency.ServiceReport.Drill"  class="form-check-input"/>  Esercitazione </li>
-            <li><input type="checkbox" id="task3" value="ToolOfficeManagement" @bind="_persistency.ServiceReport.ToolOfficeManagement"  class="form-check-input"/>  Gest. Attrezzatura/Sede  </li>
-            <li><input type="checkbox" id="task4" value="CorSoup" @bind="_persistency.ServiceReport.CorSoup"  class="form-check-input"/>  COR/SOUP  </li>
-            <li><input type="checkbox" id="task5" value="TrainingCourse" @bind="_persistency.ServiceReport.TrainingCourse"  class="form-check-input"/>  Corso Formazione  </li>
-            <li><input type="checkbox" id="task6" value="Emergency" @bind="_persistency.ServiceReport.Emergency.IsChecked"  class="form-check-input"/>  Emergenza  <input type="text" id="noteForEmergency " @bind="_persistency.ServiceReport.Emergency.Note"  class="form-control"/></li>
-            <li><input type="checkbox" id="task7" value="Other" @bind="_persistency.ServiceReport.Other.IsChecked"  class="form-check-input"/>  Altro <input type="text" id="noteForOther" @bind="_persistency.ServiceReport.Other.Note"  class="form-control"/></li>
+            <li><input type="checkbox" id="task1" value="LandMonitoring" @bind="_persistency.ServiceReport.LandMonitoring" class="form-check-input" />  Monitoraggio Territorio  </li>
+            <li><input type="checkbox" id="task2" value="Drill" @bind="_persistency.ServiceReport.Drill" class="form-check-input" />  Esercitazione </li>
+            <li><input type="checkbox" id="task3" value="ToolOfficeManagement" @bind="_persistency.ServiceReport.ToolOfficeManagement" class="form-check-input" />  Gest. Attrezzatura/Sede  </li>
+            <li><input type="checkbox" id="task4" value="CorSoup" @bind="_persistency.ServiceReport.CorSoup" class="form-check-input" />  COR/SOUP  </li>
+            <li><input type="checkbox" id="task5" value="TrainingCourse" @bind="_persistency.ServiceReport.TrainingCourse" class="form-check-input" />  Corso Formazione  </li>
+            <li><input type="checkbox" id="task6" value="Emergency" @bind="_persistency.ServiceReport.Emergency.IsChecked" class="form-check-input" />  Emergenza  <input type="text" id="noteForEmergency " @bind="_persistency.ServiceReport.Emergency.Note" class="form-control" /></li>
+            <li><input type="checkbox" id="task7" value="Other" @bind="_persistency.ServiceReport.Other.IsChecked" class="form-check-input" />  Altro <input type="text" id="noteForOther" @bind="_persistency.ServiceReport.Other.Note" class="form-control" /></li>
         </ul>
     </div>
 
     <div class="divService">
         <h3>OPERATORI: </h3>
-        <label><strong>Caposquadra: </strong><input type="text" id="capoSquadra" @bind="_persistency.ServiceReport.TeamLeader.FullName" class="form-control" /></label>&nbsp;<label><strong>Matricola: </strong><input type="text" id="badgeIdCaposquadra" @bind="_persistency.ServiceReport.TeamLeader.BadgeId" class="form-control" /></label><br />
+    
+        <label>
+            <strong>CapoSquadra: </strong>
+            <select id="capoSquadra" class="form-control" @onchange="eventArgs => { ChangeOp(eventArgs); }">
+                <option value="">-- Seleziona --</option>
+                @foreach (var name in operators)
+                {
+                    <option value="@name.FullName">@name.FullName</option>
+                }
+            </select>
+        </label>
+        <label><strong>Matricola: </strong><input type="text" id="badgeIdCaposquadra" @bind="_persistency.ServiceReport.TeamLeader.BadgeId" class="form-control" readonly /></label>
+        <br />
 
         @for (var i = 0; i < _maxOperatorNumber; i++)
         {
             var localVariable = i;
-            <label><strong>Addetto: </strong><input type="text" id="@("addetto" + (i))" @bind="_serviceReport.Operators[localVariable].FullName" class="form-control" /></label>
-            <label><strong>Matricola: </strong><input type="text" id="@("badgeId" + (i))" @bind="_serviceReport.Operators[localVariable].BadgeId" class="form-control" /></label><br />
+            <label>
+                <strong>Addetto: </strong>
+                <select id="@("addetto" + (i))" class="form-control" @onchange="eventArgs => { ChangeOp(eventArgs, i); }">
+                    <option value="">-- Seleziona --</option>
+                    @foreach (var name in operators)
+                    {
+                        <option value="@name.FullName">@name.FullName</option>
+                    }
+                </select>
+            </label>
+            <label><strong>Matricola: </strong><input type="text" id="@("badgeId" + (i))" @bind="_serviceReport.Operators[localVariable].BadgeId" class="form-control" readonly /></label><br />
         }
+
 
         <button type="button" class="btn btn-secondary" @onclick="e => { AddOperator(); }">Aggiungi Addetto</button>
     </div>
@@ -49,39 +71,46 @@
         @for (var i = 0; i < _maxVehicleNumber; i++)
         {
             var localVariable = i;
-            <label><strong>Mezzo: </strong><input type="text" id="@("type" + (i))" @bind="_serviceReport.Vehicles[localVariable].Type" class="form-control" /></label>
-            <label><strong>Targa: </strong><input type="text" id="@("plate" + (i))" @bind="_serviceReport.Vehicles[localVariable].Plate" class="form-control" /></label>
+            <label>
+                <strong>Mezzo: </strong>
+                <select id="@("type" + (i))" class="form-control" @onchange="eventArgs => { ChangeVh(eventArgs, i); }">
+                    <option value="">-- Seleziona --</option>
+                    @foreach (var vehicle in vehicles)
+                    {
+                        <option value="@vehicle.Type">@vehicle.Type</option>
+                    }
+                </select>
+            </label>
+            <label><strong>Targa: </strong><input type="text" id="@("plate" + (i))" @bind="_serviceReport.Vehicles[localVariable].Plate" class="form-control" readonly /></label>
             <label><strong>TOT KM: </strong><input type="text" id="@("totKm" + (i))" @bind="_serviceReport.Vehicles[localVariable].TotKm" class="form-control" /></label><br />
+
         }
         <button type="button" class="btn btn-secondary" @onclick="e => { AddVehicle(); }">Aggiungi Veicolo</button>
     </div>
 
-    <div class="divService">
-        <label>
-            <h3>1° Gruppo: </h3>
-            <label><strong>Ora di Partenza: </strong><input type="time" @onchange="eventArgs => { CalculateGroup(eventArgs, 0,1); }" id="firstDepartureTime" class="form-control" /></label>&nbsp;
-            <label><strong>Ora di Arrivo: </strong><input type="time" id="firstArrivalTime" @onchange="eventArgs => { CalculateGroup(eventArgs, 1, 1); }" class="form-control" /></label>&nbsp;
-            <label><strong>Ore Totali: </strong><input type="text" id="firstTotalTime" value="@_persistency.ServiceReport.FirstGroup.TotalHours" readonly="readonly" class="form-control" /></label><br />
-        </label>
-        <p>
+        <div class="divService">
             <label>
-                <h3>2° Gruppo: </h3>
-                <label><strong>Ora di Partenza: </strong><input type="time" @onchange="eventArgs => { CalculateGroup(eventArgs,0,2); }" id="secondDepartureTime" class="form-control" /></label>&nbsp;
-                <label><strong>Ora di Arrivo: </strong><input type="time" @onchange="eventArgs => { CalculateGroup(eventArgs,1,2); }" id="secondArrivalTime" class="form-control" /></label>&nbsp;
-                <label><strong>Ore Totali: </strong><input type="text" id="secondTotalTime" value="@_persistency.ServiceReport.SecondGroup.TotalHours" readonly="readonly" class="form-control" /></label><br />
+                <h3>1° Gruppo: </h3>
+                <label><strong>Ora di Partenza: </strong><input type="time" @onchange="eventArgs => { CalculateGroup(eventArgs, 0,1); }" id="firstDepartureTime" class="form-control" /></label>&nbsp;
+                <label><strong>Ora di Arrivo: </strong><input type="time" id="firstArrivalTime" @onchange="eventArgs => { CalculateGroup(eventArgs, 1, 1); }" class="form-control" /></label>&nbsp;
+                <label><strong>Ore Totali: </strong><input type="text" id="firstTotalTime" value="@_persistency.ServiceReport.FirstGroup.TotalHours" readonly="readonly" class="form-control" /></label><br />
             </label>
-        </p>
-    </div>
+            <p>
+                <label>
+                    <h3>2° Gruppo: </h3>
+                    <label><strong>Ora di Partenza: </strong><input type="time" @onchange="eventArgs => { CalculateGroup(eventArgs,0,2); }" id="secondDepartureTime" class="form-control" /></label>&nbsp;
+                    <label><strong>Ora di Arrivo: </strong><input type="time" @onchange="eventArgs => { CalculateGroup(eventArgs,1,2); }" id="secondArrivalTime" class="form-control" /></label>&nbsp;
+                    <label><strong>Ore Totali: </strong><input type="text" id="secondTotalTime" value="@_persistency.ServiceReport.SecondGroup.TotalHours" readonly="readonly" class="form-control" /></label><br />
+                </label>
+            </p>
+        </div>
 
-    <div class="divService input-group">
-        @*<label><strong>Note: </strong><textarea id="note" @bind="_persistency.ServiceReport.Note" class="form-control"> </textarea></label>*@
+        <div class="divService input-group">
         <span class="input-group-text">Note</span>
         <textarea id="note" @bind="_persistency.ServiceReport.Note" class="form-control" aria-label="Note"> </textarea>
     </div>
 
     <button type="submit" class="btn btn-secondary">Salva</button>
-
-
 
 </EditForm>
 

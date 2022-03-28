@@ -1,0 +1,23 @@
+﻿@page "/newuser"
+
+@using ProCivReport.Data
+@using ProCivReport.Models
+@using System.Reflection.Metadata
+@inject IJSRuntime _jsRuntime
+@inject HttpClient _http
+@inject Persistency _persistency
+
+<h1><span class="oi oi-person" aria-hidden="true"></span> Inserisci Nuovo Utente</h1>
+
+<EditForm Model="@_persistency.ServiceReport">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="divService">
+        <label><strong>Nominativo: </strong><input type="text" id="newUserFullName" class="form-control" @bind="FullName" /></label>&nbsp;
+        <label><strong>Matricola: </strong><input type="text" id="newUserBadgeId" class="form-control" @bind="BadgeId"  /></label><br />
+        <button type="button" class="btn btn-secondary" @onclick="e => { AddOperator(); }">Aggiungi Nominativo</button>
+    </div>
+
+</EditForm>
+
