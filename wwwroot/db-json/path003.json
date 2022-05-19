@@ -1,182 +1,184 @@
-[
-  {
-    "Id": 93,
-    "Name": "Via Armaroli"
-  },
-  {
-    "Id": 94,
-    "Name": "Via Pertini"
-  },
-  {
-    "Id": 95,
-    "Name": "Rotonda Bersaglieri"
-  },
-  {
-    "Id": 96,
-    "Name": "Via Giovanni Paolo II"
-  },
-  {
-    "Id": 97,
-    "Name": "Rotonda Bai"
-  },
-  {
-    "Id": 98,
-    "Name": "Via De Gasperi"
-  },
-  {
-    "Id": 99,
-    "Name": "Via  Bargellino"
-  },
-  {
-    "Id": 100,
-    "Name": "Via Dell'Industria"
-  },
-  {
-    "Id": 101,
-    "Name": "Rotonda Senza Nome"
-  },
-  {
-    "Id": 102,
-    "Name": "Via Roma Sud"
-  },
-  {
-    "Id": 103,
-    "Name": "Via Marzocchi"
-  },
-  {
-    "Id": 104,
-    "Name": "Via XXV Aprile"
-  },
-  {
-    "Id": 105,
-    "Name": "Via Ropa"
-  },
-  {
-    "Id": 106,
-    "Name": "Via Castagnini"
-  },
-  {
-    "Id": 107,
-    "Name": "Via Ropa"
-  },
-  {
-    "Id": 108,
-    "Name": "Via Baravelli"
-  },
-  {
-    "Id": 109,
-    "Name": "Via Piretti"
-  },
-  {
-    "Id": 110,
-    "Name": "Via Turrini"
-  },
-  {
-    "Id": 111,
-    "Name": "Via Corazza"
-  },
-  {
-    "Id": 112,
-    "Name": "Via Pizzoli"
-  },
-  {
-    "Id": 113,
-    "Name": "Via Grassilli"
-  },
-  {
-    "Id": 114,
-    "Name": "Via Gazzani"
-  },
-  {
-    "Id": 115,
-    "Name": "Via Stagni"
-  },
-  {
-    "Id": 116,
-    "Name": "Via Bizzarri"
-  },
-  {
-    "Id": 117,
-    "Name": "Via Mingozzi"
-  },
-  {
-    "Id": 118,
-    "Name": "Rotonda Harley Davidson"
-  },
-  {
-    "Id": 119,
-    "Name": "Via Persicetana"
-  },
-  {
-    "Id": 120,
-    "Name": "Via Bastia"
-  },
-  {
-    "Id": 121,
-    "Name": "Via Bizzarri"
-  },
-  {
-    "Id": 122,
-    "Name": "Via Grassilli"
-  },
-  {
-    "Id": 123,
-    "Name": "Via Finelli"
-  },
-  {
-    "Id": 124,
-    "Name": "Via Commenda"
-  },
-  {
-    "Id": 125,
-    "Name": "Via Della Salute"
-  },
-  {
-    "Id": 126,
-    "Name": "Rotonda Di Matteo"
-  },
-  {
-    "Id": 127,
-    "Name": "Via Stazione Bargellino"
-  },
-  {
-    "Id": 128,
-    "Name": "Rotonda Di Matteo"
-  },
-  {
-    "Id": 129,
-    "Name": "Via Torretta"
-  },
-  {
-    "Id": 130,
-    "Name": "Rotonda Di Matteo"
-  },
-  {
-    "Id": 131,
-    "Name": "Via Marcheselli"
-  },
-  {
-    "Id": 132,
-    "Name": "Rotonda Gandhi"
-  },
-  {
-    "Id": 133,
-    "Name": "Via Marcheselli"
-  },
-  {
-    "Id": 134,
-    "Name": "Via Giovanni Paolo II"
-  },
-  {
-    "Id": 135,
-    "Name": "Rotonda Bersaglieri"
-  },
-  {
-    "Id": 136,
-    "Name": "Via Pertini"
-  },
-  {
-    "Id": 137,
-    "Name": "Via Armaroli"
-  }
-]
+{
+  "street": [
+    {
+      "Id": 93,
+      "Name": "Via Armaroli"
+    },
+    {
+      "Id": 94,
+      "Name": "Via Pertini"
+    },
+    {
+      "Id": 95,
+      "Name": "Rotonda Bersaglieri"
+    },
+    {
+      "Id": 96,
+      "Name": "Via Giovanni Paolo II"
+    },
+    {
+      "Id": 97,
+      "Name": "Rotonda Bai"
+    },
+    {
+      "Id": 98,
+      "Name": "Via De Gasperi"
+    },
+    {
+      "Id": 99,
+      "Name": "Via  Bargellino"
+    },
+    {
+      "Id": 100,
+      "Name": "Via Dell'Industria"
+    },
+    {
+      "Id": 101,
+      "Name": "Rotonda Senza Nome"
+    },
+    {
+      "Id": 102,
+      "Name": "Via Roma Sud"
+    },
+    {
+      "Id": 103,
+      "Name": "Via Marzocchi"
+    },
+    {
+      "Id": 104,
+      "Name": "Via XXV Aprile"
+    },
+    {
+      "Id": 105,
+      "Name": "Via Ropa"
+    },
+    {
+      "Id": 106,
+      "Name": "Via Castagnini"
+    },
+    {
+      "Id": 107,
+      "Name": "Via Ropa"
+    },
+    {
+      "Id": 108,
+      "Name": "Via Baravelli"
+    },
+    {
+      "Id": 109,
+      "Name": "Via Piretti"
+    },
+    {
+      "Id": 110,
+      "Name": "Via Turrini"
+    },
+    {
+      "Id": 111,
+      "Name": "Via Corazza"
+    },
+    {
+      "Id": 112,
+      "Name": "Via Pizzoli"
+    },
+    {
+      "Id": 113,
+      "Name": "Via Grassilli"
+    },
+    {
+      "Id": 114,
+      "Name": "Via Gazzani"
+    },
+    {
+      "Id": 115,
+      "Name": "Via Stagni"
+    },
+    {
+      "Id": 116,
+      "Name": "Via Bizzarri"
+    },
+    {
+      "Id": 117,
+      "Name": "Via Mingozzi"
+    },
+    {
+      "Id": 118,
+      "Name": "Rotonda Harley Davidson"
+    },
+    {
+      "Id": 119,
+      "Name": "Via Persicetana"
+    },
+    {
+      "Id": 120,
+      "Name": "Via Bastia"
+    },
+    {
+      "Id": 121,
+      "Name": "Via Bizzarri"
+    },
+    {
+      "Id": 122,
+      "Name": "Via Grassilli"
+    },
+    {
+      "Id": 123,
+      "Name": "Via Finelli"
+    },
+    {
+      "Id": 124,
+      "Name": "Via Commenda"
+    },
+    {
+      "Id": 125,
+      "Name": "Via Della Salute"
+    },
+    {
+      "Id": 126,
+      "Name": "Rotonda Di Matteo"
+    },
+    {
+      "Id": 127,
+      "Name": "Via Stazione Bargellino"
+    },
+    {
+      "Id": 128,
+      "Name": "Rotonda Di Matteo"
+    },
+    {
+      "Id": 129,
+      "Name": "Via Torretta"
+    },
+    {
+      "Id": 130,
+      "Name": "Rotonda Di Matteo"
+    },
+    {
+      "Id": 131,
+      "Name": "Via Marcheselli"
+    },
+    {
+      "Id": 132,
+      "Name": "Rotonda Gandhi"
+    },
+    {
+      "Id": 133,
+      "Name": "Via Marcheselli"
+    },
+    {
+      "Id": 134,
+      "Name": "Via Giovanni Paolo II"
+    },
+    {
+      "Id": 135,
+      "Name": "Rotonda Bersaglieri"
+    },
+    {
+      "Id": 136,
+      "Name": "Via Pertini"
+    },
+    {
+      "Id": 137,
+      "Name": "Via Armaroli"
+    }
+  ]
+}

@@ -10,6 +10,7 @@ namespace ProCivReport
             ServiceReport = new ServiceReportDto { Operators = new List<Operator>(), Vehicles = new List<Vehicle>() };
             LightingBreakdowns = new LightingBreakdownsDto(){Breaks = new List<Break>()};
             Paths = new Paths { StreetList = new List<Street>() };
+            GeneratorManagement = new GeneratorManagementDto();
         }
 
         public LightingBreakdownsDto LightingBreakdowns { get; set; }
@@ -17,6 +18,8 @@ namespace ProCivReport
         public ServiceReportDto ServiceReport { get; set; }
 
         public Paths Paths { get; set; }
+
+        public GeneratorManagementDto GeneratorManagement { get; set; }
 
     }
 }

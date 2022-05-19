@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading.Tasks;
+using JsonFlatFileDataStore;
 using Microsoft.JSInterop;
 using ProCivReport.Models;
 
@@ -14,13 +15,16 @@ namespace ProCivReport.Pages
         private readonly Paths _paths = new() { StreetList = new List<Street>() };
         private int _nrPaths = 0;
 
+        public DataStore dataStorePaths;
+        public IDocumentCollection<Street> pathCollection;
+
         private async Task HasClicked(int streetId, string streetName, int nrPath)
         {
             await _jsRuntime.InvokeVoidAsync("disableCheckbox", streetId, "");
             await _jsRuntime.InvokeVoidAsync("saveInSession", streetId, nrPath);
 
             if (_persistency.Paths.StreetList.All(w => w.Id != streetId))
-                _persistency.Paths.StreetList.Add(new Street { AlreadyChecked = true, Id = streetId, Name = streetName});
+                _persistency.Paths.StreetList.Add(new Street { AlreadyChecked = true, Id = streetId, Name = streetName });
         }
 
         private async Task HandleValidSubmit()
@@ -37,7 +41,10 @@ namespace ProCivReport.Pages
 
             if (_paths.NrPath == "Nr1")
             {
-                var path001 = await _http.GetFromJsonAsync<List<Street>>("db-json/path001.json");
+                dataStorePaths = new DataStore("wwwroot/db-json/path001.json");
+                pathCollection = dataStorePaths.GetCollection<Street>();
+
+                var path001 = pathCollection.AsQueryable().ToList();//await _http.GetFromJsonAsync<List<Street>>("wwwroot/db-json/path001.json");
                 _paths.StreetList.AddRange(path001);
                 _nrPaths = 1;
 
@@ -46,7 +53,11 @@ namespace ProCivReport.Pages
 
             if (_paths.NrPath == "Nr2")
             {
-                var path002 = await _http.GetFromJsonAsync<List<Street>>("db-json/path002.json");
+                dataStorePaths = new DataStore("wwwroot/db-json/path002.json");
+                pathCollection = dataStorePaths.GetCollection<Street>();
+
+                var path002 = pathCollection.AsQueryable().ToList();
+
                 _paths.StreetList.AddRange(path002);
                 _nrPaths = 2;
 
@@ -55,7 +66,11 @@ namespace ProCivReport.Pages
 
             if (_paths.NrPath == "Nr3")
             {
-                var path003 = await _http.GetFromJsonAsync<List<Street>>("db-json/path003.json");
+                dataStorePaths = new DataStore("wwwroot/db-json/path003.json");
+                pathCollection = dataStorePaths.GetCollection<Street>();
+
+                var path003 = pathCollection.AsQueryable().ToList();
+
                 _paths.StreetList.AddRange(path003);
                 _nrPaths = 3;
 
@@ -64,7 +79,10 @@ namespace ProCivReport.Pages
 
             if (_paths.NrPath == "Nr4")
             {
-                var path004 = await _http.GetFromJsonAsync<List<Street>>("db-json/path004.json");
+                dataStorePaths = new DataStore("wwwroot/db-json/path004.json");
+                pathCollection = dataStorePaths.GetCollection<Street>();
+
+                var path004 = pathCollection.AsQueryable().ToList();
                 _paths.StreetList.AddRange(path004);
                 _nrPaths = 4;
 
@@ -73,7 +91,10 @@ namespace ProCivReport.Pages
 
             if (_paths.NrPath == "Nr5")
             {
-                var path005 = await _http.GetFromJsonAsync<List<Street>>("db-json/path005.json");
+                dataStorePaths = new DataStore("wwwroot/db-json/path005.json");
+                pathCollection = dataStorePaths.GetCollection<Street>();
+
+                var path005 = pathCollection.AsQueryable().ToList();
                 _paths.StreetList.AddRange(path005);
                 _nrPaths = 5;
 

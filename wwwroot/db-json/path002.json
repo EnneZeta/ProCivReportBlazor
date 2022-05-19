@@ -1,210 +1,212 @@
-[
-  {
-    "Id": 41,
-    "Name": "Via Armaroli"
-  },
-  {
-    "Id": 42,
-    "Name": "Via Roma"
-  },
-  {
-    "Id": 43,
-    "Name": "Via Pierantoni"
-  },
-  {
-    "Id": 44,
-    "Name": "Via Roma"
-  },
-  {
-    "Id": 45,
-    "Name": "Via Bazzane"
-  },
-  {
-    "Id": 46,
-    "Name": "Via Verdi"
-  },
-  {
-    "Id": 47,
-    "Name": "Via Parcheggio"
-  },
-  {
-    "Id": 48,
-    "Name": "Via Bazzane"
-  },
-  {
-    "Id": 49,
-    "Name": "Via Moro"
-  },
-  {
-    "Id": 50,
-    "Name": "Via Alpi"
-  },
-  {
-    "Id": 51,
-    "Name": "Via Delle Rose"
-  },
-  {
-    "Id": 52,
-    "Name": "Via Turati"
-  },
-  {
-    "Id": 53,
-    "Name": "Via dei Glicini"
-  },
-  {
-    "Id": 54,
-    "Name": "Via Dello Sport"
-  },
-  {
-    "Id": 55,
-    "Name": "Piazza 44410"
-  },
-  {
-    "Id": 56,
-    "Name": "Via Moro"
-  },
-  {
-    "Id": 57,
-    "Name": "Via Turati"
-  },
-  {
-    "Id": 58,
-    "Name": "Piazza Ex Poliambulatorio"
-  },
-  {
-    "Id": 59,
-    "Name": "Via Turati"
-  },
-  {
-    "Id": 60,
-    "Name": "Via Gramsci"
-  },
-  {
-    "Id": 61,
-    "Name": "Via Roma (fino al sottopasso pedonale)"
-  },
-  {
-    "Id": 62,
-    "Name": "Via Rizzola Ponente"
-  },
-  {
-    "Id": 63,
-    "Name": "Via Vittime 11 Settembre"
-  },
-  {
-    "Id": 64,
-    "Name": "Via Gramsci"
-  },
-  {
-    "Id": 65,
-    "Name": "Zona Orti"
-  },
-  {
-    "Id": 66,
-    "Name": "Via Gramsci"
-  },
-  {
-    "Id": 67,
-    "Name": "Via Vittime 11 Settembre"
-  },
-  {
-    "Id": 68,
-    "Name": "Via Rizzola Ponente"
-  },
-  {
-    "Id": 69,
-    "Name": "Via Roma"
-  },
-  {
-    "Id": 70,
-    "Name": "Via del Bracciante"
-  },
-  {
-    "Id": 71,
-    "Name": "Via Perlasca"
-  },
-  {
-    "Id": 72,
-    "Name": "Via Levi"
-  },
-  {
-    "Id": 73,
-    "Name": "Via del Bracciante"
-  },
-  {
-    "Id": 74,
-    "Name": "Via Allende"
-  },
-  {
-    "Id": 75,
-    "Name": "Via del Bracciante"
-  },
-  {
-    "Id": 76,
-    "Name": "Via Dell'artigiano"
-  },
-  {
-    "Id": 77,
-    "Name": "Rotonda Matteotti"
-  },
-  {
-    "Id": 78,
-    "Name": "Via Matteotti"
-  },
-  {
-    "Id": 79,
-    "Name": "Rotonda presso Via Berlinguer"
-  },
-  {
-    "Id": 80,
-    "Name": "Via Iotti"
-  },
-  {
-    "Id": 81,
-    "Name": "Rotonda presso Via Berlinguer"
-  },
-  {
-    "Id": 82,
-    "Name": "Via Matteotti"
-  },
-  {
-    "Id": 83,
-    "Name": "Via Buozzi"
-  },
-  {
-    "Id": 84,
-    "Name": "Via Di Vittorio"
-  },
-  {
-    "Id": 85,
-    "Name": "Via 44317"
-  },
-  {
-    "Id": 86,
-    "Name": "Piazza Della Resistenza"
-  },
-  {
-    "Id": 87,
-    "Name": "Piazza Della Pace"
-  },
-  {
-    "Id": 88,
-    "Name": "Rotonda Falcone"
-  },
-  {
-    "Id": 89,
-    "Name": "Piazza Marconi"
-  },
-  {
-    "Id": 90,
-    "Name": "Via  Roma"
-  },
-  {
-    "Id": 91,
-    "Name": "Via Gramsci"
-  },
-  {
-    "Id": 92,
-    "Name": "Via Armaroli"
-  }
-]
+{
+  "street": [
+    {
+      "Id": 41,
+      "Name": "Via Armaroli"
+    },
+    {
+      "Id": 42,
+      "Name": "Via Roma"
+    },
+    {
+      "Id": 43,
+      "Name": "Via Pierantoni"
+    },
+    {
+      "Id": 44,
+      "Name": "Via Roma"
+    },
+    {
+      "Id": 45,
+      "Name": "Via Bazzane"
+    },
+    {
+      "Id": 46,
+      "Name": "Via Verdi"
+    },
+    {
+      "Id": 47,
+      "Name": "Via Parcheggio"
+    },
+    {
+      "Id": 48,
+      "Name": "Via Bazzane"
+    },
+    {
+      "Id": 49,
+      "Name": "Via Moro"
+    },
+    {
+      "Id": 50,
+      "Name": "Via Alpi"
+    },
+    {
+      "Id": 51,
+      "Name": "Via Delle Rose"
+    },
+    {
+      "Id": 52,
+      "Name": "Via Turati"
+    },
+    {
+      "Id": 53,
+      "Name": "Via dei Glicini"
+    },
+    {
+      "Id": 54,
+      "Name": "Via Dello Sport"
+    },
+    {
+      "Id": 55,
+      "Name": "Piazza 44410"
+    },
+    {
+      "Id": 56,
+      "Name": "Via Moro"
+    },
+    {
+      "Id": 57,
+      "Name": "Via Turati"
+    },
+    {
+      "Id": 58,
+      "Name": "Piazza Ex Poliambulatorio"
+    },
+    {
+      "Id": 59,
+      "Name": "Via Turati"
+    },
+    {
+      "Id": 60,
+      "Name": "Via Gramsci"
+    },
+    {
+      "Id": 61,
+      "Name": "Via Roma (fino al sottopasso pedonale)"
+    },
+    {
+      "Id": 62,
+      "Name": "Via Rizzola Ponente"
+    },
+    {
+      "Id": 63,
+      "Name": "Via Vittime 11 Settembre"
+    },
+    {
+      "Id": 64,
+      "Name": "Via Gramsci"
+    },
+    {
+      "Id": 65,
+      "Name": "Zona Orti"
+    },
+    {
+      "Id": 66,
+      "Name": "Via Gramsci"
+    },
+    {
+      "Id": 67,
+      "Name": "Via Vittime 11 Settembre"
+    },
+    {
+      "Id": 68,
+      "Name": "Via Rizzola Ponente"
+    },
+    {
+      "Id": 69,
+      "Name": "Via Roma"
+    },
+    {
+      "Id": 70,
+      "Name": "Via del Bracciante"
+    },
+    {
+      "Id": 71,
+      "Name": "Via Perlasca"
+    },
+    {
+      "Id": 72,
+      "Name": "Via Levi"
+    },
+    {
+      "Id": 73,
+      "Name": "Via del Bracciante"
+    },
+    {
+      "Id": 74,
+      "Name": "Via Allende"
+    },
+    {
+      "Id": 75,
+      "Name": "Via del Bracciante"
+    },
+    {
+      "Id": 76,
+      "Name": "Via Dell'artigiano"
+    },
+    {
+      "Id": 77,
+      "Name": "Rotonda Matteotti"
+    },
+    {
+      "Id": 78,
+      "Name": "Via Matteotti"
+    },
+    {
+      "Id": 79,
+      "Name": "Rotonda presso Via Berlinguer"
+    },
+    {
+      "Id": 80,
+      "Name": "Via Iotti"
+    },
+    {
+      "Id": 81,
+      "Name": "Rotonda presso Via Berlinguer"
+    },
+    {
+      "Id": 82,
+      "Name": "Via Matteotti"
+    },
+    {
+      "Id": 83,
+      "Name": "Via Buozzi"
+    },
+    {
+      "Id": 84,
+      "Name": "Via Di Vittorio"
+    },
+    {
+      "Id": 85,
+      "Name": "Via 44317"
+    },
+    {
+      "Id": 86,
+      "Name": "Piazza Della Resistenza"
+    },
+    {
+      "Id": 87,
+      "Name": "Piazza Della Pace"
+    },
+    {
+      "Id": 88,
+      "Name": "Rotonda Falcone"
+    },
+    {
+      "Id": 89,
+      "Name": "Piazza Marconi"
+    },
+    {
+      "Id": 90,
+      "Name": "Via  Roma"
+    },
+    {
+      "Id": 91,
+      "Name": "Via Gramsci"
+    },
+    {
+      "Id": 92,
+      "Name": "Via Armaroli"
+    }
+  ]
+}

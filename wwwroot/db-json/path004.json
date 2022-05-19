@@ -1,134 +1,136 @@
-[
-  {
-    "Id": 138,
-    "Name": "Via Armaroli"
-  },
-  {
-    "Id": 139,
-    "Name": "Via Pertini"
-  },
-  {
-    "Id": 140,
-    "Name": "Via Prati"
-  },
-  {
-    "Id": 141,
-    "Name": "Via Fornace"
-  },
-  {
-    "Id": 142,
-    "Name": "Via Pilastrino"
-  },
-  {
-    "Id": 143,
-    "Name": "Via CastelCampeggi"
-  },
-  {
-    "Id": 144,
-    "Name": "Via Passo Pioppe"
-  },
-  {
-    "Id": 145,
-    "Name": "Via Longarola"
-  },
-  {
-    "Id": 146,
-    "Name": "Via Don Fornasari"
-  },
-  {
-    "Id": 147,
-    "Name": "Via Caduti della liberta'"
-  },
-  {
-    "Id": 148,
-    "Name": "Via Arbizzani"
-  },
-  {
-    "Id": 149,
-    "Name": "Via Longarola"
-  },
-  {
-    "Id": 150,
-    "Name": "Via San Michele"
-  },
-  {
-    "Id": 151,
-    "Name": "Via Longarola"
-  },
-  {
-    "Id": 152,
-    "Name": "Via Costa"
-  },
-  {
-    "Id": 153,
-    "Name": "Via Fellini"
-  },
-  {
-    "Id": 154,
-    "Name": "Via Pasolini"
-  },
-  {
-    "Id": 155,
-    "Name": "Via Zucchelli"
-  },
-  {
-    "Id": 156,
-    "Name": "Via Marchesini"
-  },
-  {
-    "Id": 157,
-    "Name": "Rotonda De Pisis"
-  },
-  {
-    "Id": 158,
-    "Name": "Via Longarola"
-  },
-  {
-    "Id": 159,
-    "Name": "Via Fabbreria"
-  },
-  {
-    "Id": 160,
-    "Name": "Via Barleta"
-  },
-  {
-    "Id": 161,
-    "Name": "Vicolo Parma"
-  },
-  {
-    "Id": 162,
-    "Name": "Via Longarola"
-  },
-  {
-    "Id": 163,
-    "Name": "Via Larga"
-  },
-  {
-    "Id": 164,
-    "Name": "Via Valli"
-  },
-  {
-    "Id": 165,
-    "Name": "Via Prati"
-  },
-  {
-    "Id": 166,
-    "Name": "Via Calanchi"
-  },
-  {
-    "Id": 167,
-    "Name": "Via Turati (Sala Bolognese)"
-  },
-  {
-    "Id": 168,
-    "Name": "Via Stelloni Ponente"
-  },
-  {
-    "Id": 169,
-    "Name": "Via Roma"
-  },
-  {
-    "Id": 170,
-    "Name": "Via Armaroli"
-  }
-]
+{
+  "street": [
+    {
+      "Id": 138,
+      "Name": "Via Armaroli"
+    },
+    {
+      "Id": 139,
+      "Name": "Via Pertini"
+    },
+    {
+      "Id": 140,
+      "Name": "Via Prati"
+    },
+    {
+      "Id": 141,
+      "Name": "Via Fornace"
+    },
+    {
+      "Id": 142,
+      "Name": "Via Pilastrino"
+    },
+    {
+      "Id": 143,
+      "Name": "Via CastelCampeggi"
+    },
+    {
+      "Id": 144,
+      "Name": "Via Passo Pioppe"
+    },
+    {
+      "Id": 145,
+      "Name": "Via Longarola"
+    },
+    {
+      "Id": 146,
+      "Name": "Via Don Fornasari"
+    },
+    {
+      "Id": 147,
+      "Name": "Via Caduti della liberta'"
+    },
+    {
+      "Id": 148,
+      "Name": "Via Arbizzani"
+    },
+    {
+      "Id": 149,
+      "Name": "Via Longarola"
+    },
+    {
+      "Id": 150,
+      "Name": "Via San Michele"
+    },
+    {
+      "Id": 151,
+      "Name": "Via Longarola"
+    },
+    {
+      "Id": 152,
+      "Name": "Via Costa"
+    },
+    {
+      "Id": 153,
+      "Name": "Via Fellini"
+    },
+    {
+      "Id": 154,
+      "Name": "Via Pasolini"
+    },
+    {
+      "Id": 155,
+      "Name": "Via Zucchelli"
+    },
+    {
+      "Id": 156,
+      "Name": "Via Marchesini"
+    },
+    {
+      "Id": 157,
+      "Name": "Rotonda De Pisis"
+    },
+    {
+      "Id": 158,
+      "Name": "Via Longarola"
+    },
+    {
+      "Id": 159,
+      "Name": "Via Fabbreria"
+    },
+    {
+      "Id": 160,
+      "Name": "Via Barleta"
+    },
+    {
+      "Id": 161,
+      "Name": "Vicolo Parma"
+    },
+    {
+      "Id": 162,
+      "Name": "Via Longarola"
+    },
+    {
+      "Id": 163,
+      "Name": "Via Larga"
+    },
+    {
+      "Id": 164,
+      "Name": "Via Valli"
+    },
+    {
+      "Id": 165,
+      "Name": "Via Prati"
+    },
+    {
+      "Id": 166,
+      "Name": "Via Calanchi"
+    },
+    {
+      "Id": 167,
+      "Name": "Via Turati (Sala Bolognese)"
+    },
+    {
+      "Id": 168,
+      "Name": "Via Stelloni Ponente"
+    },
+    {
+      "Id": 169,
+      "Name": "Via Roma"
+    },
+    {
+      "Id": 170,
+      "Name": "Via Armaroli"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "generatorManagementDto": [
+    {
+      "id": 0,
+      "date": "2022-05-19T22:24:19.4975247+02:00",
+      "operator": {
+        "fullName": "Zazzaro Aniello",
+        "badgeId": "17041982"
+      },
+      "generator": "Abisso",
+      "operationType": "Smontaggio",
+      "workHours": 0,
+      "signature": null
+    },
+    {
+      "id": 1,
+      "date": "2022-05-19T22:33:35.8671118+02:00",
+      "operator": {
+        "fullName": "Manzo Andrea",
+        "badgeId": "11122233"
+      },
+      "generator": "Cicerone",
+      "operationType": "Rimontaggio",
+      "workHours": 150,
+      "signature": null
+    },
+    {
+      "id": 2,
+      "date": "2022-05-19T22:35:29.735775+02:00",
+      "operator": {
+        "fullName": "Grassilli Gianluca",
+        "badgeId": "44455566"
+      },
+      "generator": "Brucewayne",
+      "operationType": "Cuore",
+      "workHours": 150,
+      "signature": null
+    },
+    {
+      "id": 3,
+      "date": "2022-05-19T22:44:50.7290214+02:00",
+      "operator": {
+        "fullName": "Aroulli Edmond",
+        "badgeId": "45678955"
+      },
+      "generator": "Caronte",
+      "operationType": "Cablaggio",
+      "workHours": 390,
+      "signature": null
+    },
+    {
+      "id": 4,
+      "date": "2022-05-19T22:47:56.0574471+02:00",
+      "operator": {
+        "fullName": "Aroulli Edmond",
+        "badgeId": "45678955"
+      },
+      "generator": "Dante",
+      "operationType": "Cablaggio",
+      "workHours": 480,
+      "signature": null
+    },
+    {
+      "id": 5,
+      "date": "2022-05-19T22:49:27.1108836+02:00",
+      "operator": {
+        "fullName": "Bruce Wayne",
+        "badgeId": "17081999"
+      },
+      "generator": "Batman",
+      "operationType": "Sequestro",
+      "workHours": 330,
+      "signature": null
+    }
+  ]
+}
