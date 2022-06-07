@@ -52,8 +52,49 @@
         </label>
         <button type="submit" class="btn btn-secondary">Salva</button>
     </div>
+
     <div class="divService">
-        <h3>STORICO: </h3>
+        <h3>RICERCA: </h3>
+        <label>
+            <strong>Criterio Ricerca: </strong>
+            <select id="criteria" class="form-control" @bind="@SelectedCriteria">
+                <option value="">-- Seleziona --</option>
+                <option value="operator">Operatore</option>
+                <option value="generator">Gruppo Elettrogeno</option>
+            </select>
+        </label>
+        <label>
+            <strong>Valore Ricerca:</strong>
+            <input type="text" id="searchValue" class="form-control" @bind="@CurrentSearchValue" @oninput="@((e) => { CurrentSearchValue=(string)e.Value;})" />
+        </label>
+        <button type="button" class="btn btn-secondary" @onclick="eventArgs => { Search(); }">Cerca</button>
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Data</th>
+                    <th scope="col">Operatore</th>
+                    <th scope="col">Gruppo Elettrogeno</th>
+                    <th scope="col">Tipo Operazione</th>
+                    <th scope="col">Ore di Lavoro</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var search in searched)
+                {
+                    <tr style="background-color:#e0e0e0;">
+                        <td>@search.Date.ToShortDateString()</td>
+                        <td>@search.Operator.FullName</td>
+                        <td>@search.Generator</td>
+                        <td>@search.OperationType</td>
+                        <td>@search.WorkHours.ToHours()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="divService">
+        <h3>ULTIMI 10 INSERIMENTI: </h3>
         <table class="table table-striped">
             <thead class="thead-light">
                 <tr>
@@ -67,20 +108,20 @@
             <tbody>
                 @foreach (var generator in generators)
                 {
-                <tr style="background-color:#e0e0e0;">
-                    <td>@generator.Date.ToShortDateString()</td>
-                    <td>@generator.Operator.FullName</td>
-                    <td>@generator.Generator</td>
-                    <td>@generator.OperationType</td>
-                    <td>@generator.WorkHours.ToHours()</td>
-                </tr>
+                    <tr style="background-color:#e0e0e0;">
+                        <td>@generator.Date.ToShortDateString()</td>
+                        <td>@generator.Operator.FullName</td>
+                        <td>@generator.Generator</td>
+                        <td>@generator.OperationType</td>
+                        <td>@generator.WorkHours.ToHours()</td>
+                    </tr>
                 }
             </tbody>
         </table>
     </div>
 
 
-   
+
 </EditForm>
 
 

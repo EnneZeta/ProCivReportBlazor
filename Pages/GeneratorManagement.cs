@@ -1,6 +1,4 @@
-﻿
-
-using JsonFlatFileDataStore;
+﻿using JsonFlatFileDataStore;
 using Microsoft.AspNetCore.Components;
 using ProCivReport.Models;
 using System;
@@ -19,6 +17,12 @@ namespace ProCivReport.Pages
         public DataStore dataStoreGenerators;
         public IDocumentCollection<GeneratorManagementDto> generatorsCollection;
         public List<GeneratorManagementDto> generators { get; set; }
+        public List<GeneratorManagementDto> searched { get; set; }
+
+        private string CurrentSearchValue { get; set; } = "";
+
+        private string SelectedCriteria { get; set; } = "";
+
 
         protected override void OnInitialized()
         {
@@ -26,6 +30,8 @@ namespace ProCivReport.Pages
             GetOperators();
             GetGeneratorsHistory();
             base.OnInitialized();
+
+            searched = new List<GeneratorManagementDto>();
         }
 
         private async Task HandleValidSubmit()
@@ -54,6 +60,17 @@ namespace ProCivReport.Pages
             _persistency.GeneratorManagement.Operator.BadgeId = operators.First(w => w.FullName.Equals(fullName)).BadgeId;
         }
 
+        private void Search()
+        {
+            dataStoreGenerators = new DataStore("wwwroot/db-json/generators.json");
+            generatorsCollection = dataStoreGenerators.GetCollection<GeneratorManagementDto>();
+
+            if(SelectedCriteria == "operator")
+                searched = generatorsCollection.AsQueryable().Where(w => w.Operator.FullName.ToLower().Contains(CurrentSearchValue.ToLower())).OrderByDescending(o => o.Date).ToList();
+            else
+                searched = generatorsCollection.AsQueryable().Where(w => w.Generator.ToString().ToLower().Contains(CurrentSearchValue.ToLower())).OrderByDescending(o => o.Date).ToList();
+        }
+
         private void ChangeWorkHours(ChangeEventArgs args)
         {
             var workHours = Convert.ToInt32(args.Value);
@@ -71,7 +88,7 @@ namespace ProCivReport.Pages
         {
             dataStoreGenerators = new DataStore("wwwroot/db-json/generators.json");
             generatorsCollection = dataStoreGenerators.GetCollection<GeneratorManagementDto>();
-            generators = generatorsCollection.AsQueryable().ToList();
+            generators = generatorsCollection.AsQueryable().OrderByDescending(o => o.Date).Take(10).ToList();
         }
     }
 }

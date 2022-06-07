@@ -71,6 +71,78 @@
       "operationType": "Sequestro",
       "workHours": 330,
       "signature": null
+    },
+    {
+      "id": 6,
+      "date": "2022-06-07T22:03:27.246369+02:00",
+      "operator": {
+        "fullName": "Bruce Wayne",
+        "badgeId": "17081999"
+      },
+      "generator": "Cicerone",
+      "operationType": "Smontaggio",
+      "workHours": 240,
+      "signature": null
+    },
+    {
+      "id": 7,
+      "date": "2022-06-06T00:00:00",
+      "operator": {
+        "fullName": "Zazzaro Aniello",
+        "badgeId": "17041982"
+      },
+      "generator": "Cicerone",
+      "operationType": "Rimontaggio",
+      "workHours": 120,
+      "signature": null
+    },
+    {
+      "id": 8,
+      "date": "2022-06-05T00:00:00",
+      "operator": {
+        "fullName": "Manzo Andrea",
+        "badgeId": "11122233"
+      },
+      "generator": "Brucewayne",
+      "operationType": "Smontaggio",
+      "workHours": 180,
+      "signature": null
+    },
+    {
+      "id": 9,
+      "date": "2022-06-08T00:00:00",
+      "operator": {
+        "fullName": "Grassilli Gianluca",
+        "badgeId": "44455566"
+      },
+      "generator": "Abisso",
+      "operationType": "Smontaggio",
+      "workHours": 90,
+      "signature": null
+    },
+    {
+      "id": 10,
+      "date": "2022-06-09T00:00:00",
+      "operator": {
+        "fullName": "Grassilli Gianluca",
+        "badgeId": "44455566"
+      },
+      "generator": "Cicerone",
+      "operationType": "Smontaggio",
+      "workHours": 90,
+      "signature": null
+    },
+    {
+      "id": 11,
+      "date": "2022-06-07T22:05:32.8605279+02:00",
+      "operator": {
+        "fullName": "Manzo Andrea",
+        "badgeId": "11122233"
+      },
+      "generator": "Dante",
+      "operationType": "Cablaggio",
+      "workHours": 300,
+      "signature": null
     }
   ]
 }
