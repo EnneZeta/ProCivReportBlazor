@@ -27,17 +27,26 @@ namespace ProCivReport.Controllers
         }
 
         [HttpPost]
-        public void Post(Persistency persistency)
+        public IActionResult Post(Persistency persistency)
         {
             var srPath = _serviceReportBuilder.Build(persistency.ServiceReport);
             var lbPath = _lightingBreakdownsBuilder.Build(persistency);
             var pPath = _pathBuilder.Build(persistency);
 
 
-            _mailSender.Send(new List<string>
+            //_mailSender.Send(new List<string>
+            //{
+            //    srPath,lbPath, pPath
+            //});
+
+            var pdfList = new Dictionary<string, string>
             {
-                srPath,lbPath, pPath
-            });
+                { "Rapporto di Servizio", srPath },
+                { "Guasti Illuminazione", lbPath },
+                { "Percorsi", pPath }
+            };
+
+            return Ok(pdfList);
         }
     }
 }

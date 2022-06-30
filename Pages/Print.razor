@@ -8,5 +8,8 @@
 @inject Persistency _persistency
 
 <h1>Stampa Documentazione</h1>
-
+@foreach (var pdf in pdfList)
+{
+    <a href="@pdf.Value">@pdf.Key</a><br />
+}
 

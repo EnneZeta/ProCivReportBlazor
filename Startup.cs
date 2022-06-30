@@ -39,7 +39,7 @@ namespace ProCivReport
             services.AddServerSideBlazor();
             services.AddSingleton<Persistency>();
             services.AddScoped<ToastService>();
-            services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:32365/") }); //TODO: Mettere parametrico http://localhost:5000/ http://localhost:32365/ http://vpccalderara-001-site1.etempurl.com
+            services.AddScoped(sp => new HttpClient { BaseAddress = new Uri("http://localhost:5000/") }); //TODO: Mettere parametrico http://localhost:5000/ http://localhost:32365/ http://vpccalderara-001-site1.etempurl.com
             services.AddSingleton<IRepo>(_ =>
                 new Repo(""));
             services.AddSingleton<ServiceReportBuilder>();
